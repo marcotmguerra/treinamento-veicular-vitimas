@@ -8,7 +8,7 @@ h1 {
     color: #333;
 }
 
-/* --- NOVOS ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL --- */
+/* --- ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL --- */
 .control-panel {
     display: flex;
     justify-content: space-between;
@@ -63,7 +63,7 @@ h1 {
     color: #333; /* Cor padrão */
 }
 
-/* NOVA CLASSE para o aviso de 5 minutos */
+/* CLASSE para o aviso de 5 minutos */
 #timerDisplay.timer-warning {
     color: #d9534f; /* Vermelho */
     animation: pulse 1s infinite;
@@ -179,26 +179,14 @@ th {
     background-color: #f0f0f0;
 }
 
-/* --- LARGURAS E LÓGICA DE ESCONDER/MOSTRAR (DESKTOP) --- */
-/* Larguras para Desktop */
-table th:nth-child(2) { 
+/* --- LARGURAS DA TABELA (DESKTOP) --- */
+/* Colunas 2 (Inicial) e 3 (Tardia) têm 35% */
+table th:nth-child(2),
+table th:nth-child(3) { 
     width: 35%; 
 }
 table th:nth-child(4) { 
     width: 15%;
-}
-
-/* 1. Por Padrão: ESCONDE a 3ª coluna (Avaliação Tardia) */
-table th:nth-child(3),
-table td:nth-child(3) {
-    display: none;
-    width: 35%; /* Define a largura mesmo estando escondida */
-}
-
-/* 2. Quando a classe .show-tardia é adicionada ao body: MOSTRA a 3ª coluna */
-body.show-tardia table th:nth-child(3),
-body.show-tardia table td:nth-child(3) {
-    display: table-cell; /* Reverte para o padrão de tabela */
 }
 /* --- FIM DAS REGRAS DA TABELA DESKTOP --- */
 
@@ -303,7 +291,7 @@ select {
         padding-bottom: 10px;
     }
     
-    /* --- LÓGICA DE RÓTULOS E ESCONDER/MOSTRAR (MOBILE) --- */
+    /* --- LÓGICA DE RÓTULOS (MOBILE) --- */
     
     /* Estilo para a "Avaliação Inicial" (a 2ª célula da linha) */
     table td:nth-child(2)::before {
@@ -313,17 +301,9 @@ select {
         margin-right: 5px; /* Espaçamento entre o rótulo e o valor */
     }
     
-    /* 1. Por Padrão: ESCONDE a 3ª célula (Avaliação Tardia) */
-    table td:nth-child(3) {
-        display: none; 
-    }
+    /* A Célula Tardia (3ª) agora está sempre visível (display: block é o padrão) */
+    /* Portanto, só precisamos do rótulo dela */
     
-    /* 2. Quando a classe .show-tardia é adicionada ao body: MOSTRA a 3ª célula */
-    body.show-tardia table td:nth-child(3) {
-        display: block; /* Reverte para o padrão mobile */
-    }
-
-    /* O rótulo da 3ª célula (só aparece quando ela é mostrada) */
     table td:nth-child(3)::before {
         content: "Tardia: "; /* O texto que será inserido */
         font-weight: bold;
