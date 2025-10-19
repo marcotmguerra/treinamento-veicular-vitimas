@@ -130,7 +130,7 @@ select {
     /* --- A MÁGICA DA TABELA --- */
     
     
-/* table thead {
+ table thead {
         display: none;
     }
     table tr {
@@ -153,4 +153,5 @@ select {
     table td:first-child {
         font-weight: bold;
         background-color: #f9f9f9;
+
         font-size: 1.1em; 
