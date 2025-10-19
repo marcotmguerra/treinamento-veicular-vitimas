@@ -8,7 +8,7 @@ h1 {
     color: #333;
 }
 
-/* --- ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL --- */
+/* --- ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL (NÃO-STICKY) --- */
 .control-panel {
     display: flex;
     justify-content: space-between;
@@ -102,7 +102,7 @@ h1 {
     background-color: #f0ad4e; /* Laranja/Amarelo */
     color: white;
 }
-/* --- FIM DOS NOVOS ESTILOS --- */
+/* --- FIM DOS ESTILOS DO PAINEL --- */
 
 
 /* Bloco de briefing 'details' */
@@ -170,26 +170,23 @@ table {
 
 th, td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 8px; /* Reduzido um pouco para caber mais linhas */
     text-align: left;
     vertical-align: top;
+    font-size: 0.95em; /* Reduzido um pouco para caber mais linhas */
 }
 
 th {
     background-color: #f0f0f0;
 }
 
-/* --- LARGURAS DA TABELA (DESKTOP) --- */
-/* Colunas 2 (Inicial) e 3 (Tardia) têm 35% */
-table th:nth-child(2),
-table th:nth-child(3) { 
+/* Larguras para Desktop (Coluna 3 sempre visível) */
+table th:nth-child(2), table th:nth-child(3) {
     width: 35%; 
 }
-table th:nth-child(4) { 
+table th:nth-child(4) {
     width: 15%;
 }
-/* --- FIM DAS REGRAS DA TABELA DESKTOP --- */
-
 
 /* Cores dos Títulos */
 #vitima1 h3, #vitima3 h3 {
@@ -258,7 +255,6 @@ select {
 
     /* --- A MÁGICA DA TABELA --- */
     
-    
  table thead {
         display: none;
     }
@@ -276,8 +272,9 @@ select {
         border-bottom: 1px dotted #eee;
         text-align: left;
         /* Adiciona um padding interno para o rótulo não colar na borda */
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 10px; /* Reduzido um pouco */
+        padding-bottom: 10px; /* Reduzido um pouco */
+        font-size: 1em; /* Tamanho normal no mobile */
     }
     table td:last-child {
         border-bottom: none;
@@ -285,37 +282,33 @@ select {
     table td:first-child {
         font-weight: bold;
         background-color: #f9f9f9;
-        font-size: 1.1em;
-        /* Reseta o padding para o "título" não ficar muito grande */
-        padding-top: 10px; 
-        padding-bottom: 10px;
+        font-size: 1.05em; /* Título um pouco maior */
+        padding-top: 8px; 
+        padding-bottom: 8px;
     }
     
     /* --- LÓGICA DE RÓTULOS (MOBILE) --- */
     
     /* Estilo para a "Avaliação Inicial" (a 2ª célula da linha) */
     table td:nth-child(2)::before {
-        content: "Inicial: "; /* O texto que será inserido */
+        content: "Inicial: ";
         font-weight: bold;
-        color: #555; /* Um cinza escuro para o rótulo */
-        margin-right: 5px; /* Espaçamento entre o rótulo e o valor */
+        color: #555;
+        margin-right: 5px;
     }
     
-    /* A Célula Tardia (3ª) agora está sempre visível (display: block é o padrão) */
-    /* Portanto, só precisamos do rótulo dela */
-    
+    /* Estilo para a "Avaliação Tardia" (a 3ª célula da linha - sempre visível) */
     table td:nth-child(3)::before {
-        content: "Tardia: "; /* O texto que será inserido */
+        content: "Tardia: ";
         font-weight: bold;
-        color: #d9534f; /* O mesmo vermelho 'grave' para destaque */
+        color: #d9534f;
         margin-right: 5px;
     }
     /* --- FIM DA LÓGICA MOBILE --- */
 
-
-    /* Opcional: Alinha a célula "Procedimento Feito?" */
+    /* Alinha a célula "Procedimento Feito?" */
     table td:nth-child(4) {
-         padding-top: 15px; 
-         padding-bottom: 15px;
+         padding-top: 12px; 
+         padding-bottom: 12px;
     }
 }
