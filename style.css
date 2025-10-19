@@ -146,6 +146,9 @@ select {
         border: none;
         border-bottom: 1px dotted #eee;
         text-align: left;
+        /* Adiciona um padding interno para o rótulo não colar na borda */
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
     table td:last-child {
         border-bottom: none;
@@ -153,5 +156,35 @@ select {
     table td:first-child {
         font-weight: bold;
         background-color: #f9f9f9;
+        font-size: 1.1em;
+        /* Reseta o padding para o "título" não ficar muito grande */
+        padding-top: 10px; 
+        padding-bottom: 10px;
+    }
+    
+    /* ----- INÍCIO DA ALTERAÇÃO ----- */
+    /* Adiciona rótulos de texto às células de avaliação */
 
-        font-size: 1.1em; 
+    /* Estilo para a "Avaliação Inicial" (a 2ª célula da linha) */
+    table td:nth-child(2)::before {
+        content: "Inicial: "; /* O texto que será inserido */
+        font-weight: bold;
+        color: #555; /* Um cinza escuro para o rótulo */
+        margin-right: 5px; /* Espaçamento entre o rótulo e o valor */
+    }
+    
+    /* Estilo para a "Avaliação Tardia" (a 3ª célula da linha) */
+    table td:nth-child(3)::before {
+        content: "Tardia: "; /* O texto que será inserido */
+        font-weight: bold;
+        color: #d9534f; /* O mesmo vermelho 'grave' para destaque */
+        margin-right: 5px;
+    }
+
+    /* Opcional: Alinha a célula "Procedimento Feito?" */
+    table td:nth-child(4) {
+         padding-top: 15px; 
+         padding-bottom: 15px;
+    }
+    /* ----- FIM DA ALTERAÇÃO ----- */
+}
