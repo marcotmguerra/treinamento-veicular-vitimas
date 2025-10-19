@@ -8,6 +8,11 @@
 </head>
 <body>
 
+    <nav class="main-nav">
+        <a href="index.html" class="active">Vítimas</a>
+        <a href="comando.html">Comando</a>
+        <a href="tecnicos.html">Técnicos</a>
+    </nav>
     <h1>Simulador de Vítimas - Salvamento Veicular</h1>
 
     <div class="control-panel">
@@ -38,7 +43,7 @@
         <summary>Clique aqui para ver o Objetivo e Pontos Importantes</summary>
         <div>
             <h3>Objetivo do Treinamento e Pontos Importantes</h3>
-            <p>A avaliação inicial das equipes tem apresentado um bom desempenho, porém a avaliação segundaria ainda pode ser aprimorada. Os avaliadores costumam ser bastante exigentes e atentos aos detalhes, valorizando não apenas a execução do procedimento, mas também a forma como ele é realizado. Não basta aferir o pulso — é preciso posicionar corretamente os dedos, avaliar a intensidade, comparar com o outro membro e demonstrar segurança e qualidade no atendimento, por exemplo. Essa atenção e cuidado em cada ação são fundamentais para alcançar uma avaliação de excelência.</p>
+            <p>A Cel Karina, assim como o enf Anderson,são bem meticulosos na avaliação, eles não irão distribuir pontos se o avaliado não realizar os procedimentos corretos. Ela quer ver mais. Não é só aferir o pulso, é posicionar o dedo corretamente, perguntar se tá fraco ou forte, comparar com o outro membro…ela quer ver a qualidade no atendimento. Claro, estou prevendo que as equipes serão avaliadas por ela ou pelo Anderson. Mas, de qualquer forma, essa é a chave para o sucesso.</p>
             <p>Para as vítimas abaixo, foi pensando exatamente isso, os militares avaliados tem que extrair os parâmetros das vítimas e identificar as lesões. Com o passar do tempo, as vítimas vão alterando seus parâmetros, e eles terão que identificar e tratar isso conforme for necessário.</p>
             <p><strong>Os APHs das duas equipes são muito bons! Mas o objetivo é extrair o 10 no atendimento.</strong></p>
         </div>
@@ -57,6 +62,16 @@
     </select>
 
     <hr>
+
+    <section class="notes-section">
+        <h2>Notas Gerais sobre o Atendimento às Vítimas</h2>
+        <textarea id="noteInput" rows="4" placeholder="Digite sua observação geral aqui (ex: Demora na triagem, Boa comunicação entre equipes, etc.)..."></textarea>
+        <button id="addNoteButton">Adicionar Nota (Registra Tempo)</button>
+        <h3>Notas Registradas:</h3>
+        <div id="notesDisplay">
+            <p>Nenhuma nota adicionada ainda.</p>
+        </div>
+    </section>
 
     <div id="vitima1" class="conteudo-vitima">
         <h3>Vítima 1 (Estado Grave Oculto - TCE)</h3>
@@ -308,7 +323,7 @@
         <div class="detalhe-ator">
             <p><strong>Condição Clínica Subjacente:</strong> Fratura de costela (lado direito) que perfurou o pulmão, causando vazamento de ar para a cavidade torácica.</p>
             <p><strong>Aparência:</strong> Sentado, inclinado para o lado esquerdo (para aliviar a dor). Expressão de pânico, lutando para respirar.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja com extrema ansiedade e dificuldade para respirar. Fale frases curtas ("Não consigo... respirar..."). Reclame de dor aguda no lado direito do peito. Após 10 min, comece a ficar confuso, sonolento e os lábios podem ficar azulados.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja com extrema ansiedade e dificuldade para respirar. Fale frases curtas ("Não consigo... respirar..."). Reclame de dor aguda no lado direito do peito. Após 10 min, comece a ficar confuso, sonolento e os lábios podem ficar azulados (se houver maquiagem).</p>
         </div>
         <h4>Evolução dos Parâmetros</h4>
         <table>
@@ -915,6 +930,15 @@
         </table>
     </div>
 
+    <section class="pdf-links">
+        <h2>Documentos de Apoio</h2>
+        <ul>
+            <li><a href="https://drive.google.com/file/d/1p9HKlXH8NcmLVYop8WEAAeCx4v0od2aJ/view?usp=sharing" target="_blank">WRO Extrication 2025 (PDF)</a></li>
+            <li><a href="https://drive.google.com/file/d/1KCHbb88CYHCBiIAmATBWOzeMFS5ovwRR/view?usp=sharing" target="_blank">Guideline RTC Medico 2025</a></li>
+            <li><a href="https://drive.google.com/file/d/1rKubMDypmcJ2VGPANDyGeVMse8opdHgy/view?usp=sharing" target="_blank">Guideline Trauma 2025</a></li>
+            </ul>
+        
+    </section>
 
     <script src="script.js"></script>
 </body>

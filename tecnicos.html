@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador - Técnicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <a href="index.html">Vítimas</a>
+        <a href="comando.html">Comando</a>
+        <a href="tecnicos.html" class="active">Técnicos</a>
+    </nav>
+
+    <h1>Simulador - Visão dos Técnicos</h1>
+
+    <div class="control-panel">
+       <div class="timer-config">
+            <div>
+                <label for="inputTotalTime">Tempo Total (min):</label>
+                <input type="number" id="inputTotalTime" value="30" min="1">
+            </div>
+            <div>
+                <label for="inputDegradeTime">Alerta/Evento (min):</label>
+                <input type="number" id="inputDegradeTime" value="10" min="1">
+            </div>
+        </div>
+        <div class="timer-actions">
+            <button id="btnStartTimer">▶ Iniciar Simulado</button>
+            <button id="btnReset">Limpar / Resetar</button>
+        </div>
+        <div class="timer-display-box">
+            <p>Tempo Restante:</p> <span id="timerDisplay">--:--</span>
+        </div>
+    </div>
+    <details class="briefing-box">
+        <summary>Clique aqui para Adicionar Observações Gerais</summary>
+        <div>
+            <p></p>
+        </div>
+    </details>
+    <hr>
+
+    <section class="notes-section">
+        <h2>Notas para Briefing (Técnicos)</h2>
+        <textarea id="noteInput" rows="4" placeholder="Digite sua observação aqui..."></textarea>
+        <button id="addNoteButton">Adicionar Nota (Registra Tempo)</button>
+        <h3>Notas Registradas:</h3>
+        <div id="notesDisplay">
+            <p>Nenhuma nota adicionada ainda.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="pdf-links">
+        <h2>Documentos de Apoio</h2>
+        <ul>
+            <li><a href="https://drive.google.com/file/d/127eSd19i_HYDA7awMGZTqlBz-vDMdWdY/view?usp=sharing" target="_blank">Ficha TECNICOS (PDF)</a></li>
+            <li><a href="https://drive.google.com/file/d/1RgZJlkan2Wj7aMc0vJ0ahVkLgWxA8zSt/view?usp=sharing" target="_blank">Guia TECNICOS (PDF)</a></li>
+        </ul>
+        
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

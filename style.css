@@ -312,3 +312,241 @@ select {
          padding-bottom: 12px;
     }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    padding-top: 60px; /* Espaço para a navegação fixa */
+}
+
+h1 {
+    color: #333;
+    margin-top: 0; /* Remove margem extra do H1 */
+}
+
+/* --- ESTILOS DA NAVEGAÇÃO --- */
+.main-nav {
+    background-color: #333;
+    padding: 10px 0; /* Ajustado padding vertical, removido horizontal */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1010; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-sizing: border-box; 
+    
+    /* NOVAS LINHAS PARA CENTRALIZAR */
+    display: flex;             
+    justify-content: center; 
+}
+
+/* Ajuste nos links para funcionarem com flex */
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px; /* Adiciona espaço horizontal entre links */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Evita que o texto quebre em telas menores */
+}
+/* (O resto das regras .main-nav a:hover e a.active permanecem iguais) */
+.main-nav a:hover {
+    background-color: #555;
+}
+
+.main-nav a.active {
+    background-color: #007bff; /* Azul para destacar a página ativa */
+    font-weight: bold;
+}
+/* --- FIM DOS ESTILOS DA NAVEGAÇÃO --- */
+
+
+/* --- ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL (NÃO-STICKY) --- */
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Para o mobile */
+    gap: 20px; /* Espaço entre os elementos */
+    margin-top: 20px; /* Adiciona margem acima */
+}
+/* (O resto dos estilos do .control-panel, .timer-config, etc. permanecem iguais) */
+.timer-config { display: flex; gap: 15px; }
+.timer-config div { display: flex; flex-direction: column; }
+.timer-config label { font-size: 0.9em; font-weight: bold; margin-bottom: 5px; }
+.timer-config input[type="number"] { width: 70px; padding: 8px; font-size: 1em; border: 1px solid #ccc; border-radius: 4px; }
+.timer-actions { display: flex; gap: 10px; }
+.timer-display-box { text-align: right; }
+.timer-display-box p { margin: 0; font-size: 0.9em; font-weight: bold; }
+#timerDisplay { font-size: 1.8em; font-weight: bold; color: #333; }
+#timerDisplay.timer-warning { color: #d9534f; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+#btnStartTimer, #btnReset { font-size: 1em; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+#btnStartTimer { background-color: #5cb85c; color: white; }
+#btnStartTimer:disabled, .timer-config input:disabled { background-color: #aaa; cursor: not-allowed; opacity: 0.7; }
+#btnReset { background-color: #f0ad4e; color: white; }
+/* --- FIM DOS ESTILOS DO PAINEL --- */
+
+
+/* Bloco de briefing 'details' */
+.briefing-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+/* (Estilos do .briefing-box summary e div permanecem iguais) */
+.briefing-box summary { font-weight: bold; cursor: pointer; font-size: 1.1em; color: #0056b3; padding: 5px 0; }
+.briefing-box summary:hover { text-decoration: underline; }
+.briefing-box > div { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; line-height: 1.6; }
+
+/* Conteúdo das vítimas */
+.conteudo-vitima {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.conteudo-vitima.active { display: block; }
+
+/* Detalhes do ator */
+.detalhe-ator {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+}
+.detalhe-ator p { margin: 5px 0; }
+
+/* --- ESTILOS DA SEÇÃO DE NOTAS --- */
+.notes-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+.notes-section h2, .notes-section h3 {
+    margin-top: 0;
+    color: #333;
+}
+.notes-section textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.notes-section button {
+    font-size: 1em;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #007bff; /* Azul */
+    color: white;
+    margin-bottom: 20px;
+}
+#notesDisplay .note-entry {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+#notesDisplay .note-entry strong {
+    color: #d9534f; /* Timestamp em vermelho */
+    margin-right: 8px;
+}
+/* --- FIM DOS ESTILOS DE NOTAS --- */
+
+/* --- ESTILOS DOS LINKS PDF --- */
+.pdf-links {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+.pdf-links h2 { margin-top: 0; }
+.pdf-links ul { padding-left: 20px; }
+.pdf-links li { margin-bottom: 10px; }
+.pdf-links a { color: #0056b3; text-decoration: none; }
+.pdf-links a:hover { text-decoration: underline; }
+/* --- FIM DOS ESTILOS PDF --- */
+
+
+/* Estilo da Tabela (Desktop) */
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; font-size: 0.95em; }
+th { background-color: #f0f0f0; }
+table th:nth-child(2), table th:nth-child(3) { width: 35%; }
+table th:nth-child(4) { width: 15%; }
+
+/* Cores dos Títulos das Vítimas */
+#vitima1 h3, #vitima3 h3 { color: #d9534f; }
+#vitima2 h3, #vitima4 h3, #vitima5 h3, #vitima6 h3, #vitima7 h3 { color: #5cb85c; }
+
+select { font-size: 16px; padding: 5px; }
+
+
+/* =====================================================
+   REGRAS PARA CELULAR (Responsivo) 
+=====================================================
+*/
+@media screen and (max-width: 768px) { /* Aumentei um pouco o breakpoint */
+
+    body {
+        margin: 10px;
+        padding-top: 50px; /* Ajuste para navegação menor */
+    }
+    .main-nav { padding: 5px 10px; } /* Navegação mais compacta */
+    .main-nav a { padding: 8px 10px; font-size: 0.9em; }
+
+    h1 { font-size: 1.6em; } /* Título menor */
+    h3 { font-size: 1.2em; }
+
+    /* --- Painel de Controlo responsivo --- */
+    .control-panel { flex-direction: column; align-items: stretch; gap: 15px; }
+    .timer-config { justify-content: space-around; }
+    .timer-config input[type="number"] { width: 100px; }
+    .timer-actions { flex-direction: column; width: 100%; }
+    .timer-display-box { text-align: center; background-color: #f4f4f4; padding: 10px; border-radius: 4px; }
+    #timerDisplay { font-size: 2em; } /* Pouco menor no mobile */
+
+    select { width: 100%; }
+    .conteudo-vitima, .notes-section, .pdf-links { padding: 15px; } /* Padding menor */
+
+    /* --- A MÁGICA DA TABELA --- */
+    table thead { display: none; }
+    table tr { display: block; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px; }
+    table td { display: block; width: 100%; box-sizing: border-box; border: none; border-bottom: 1px dotted #eee; text-align: left; padding-top: 10px; padding-bottom: 10px; font-size: 1em; }
+    table td:last-child { border-bottom: none; }
+    table td:first-child { font-weight: bold; background-color: #f9f9f9; font-size: 1.05em; padding-top: 8px; padding-bottom: 8px; }
+    
+    /* Rótulos de texto (Mobile) */
+    table td:nth-child(2)::before { content: "Inicial: "; font-weight: bold; color: #555; margin-right: 5px; }
+    table td:nth-child(3)::before { content: "Tardia: "; font-weight: bold; color: #d9534f; margin-right: 5px; }
+    table td:nth-child(4) { padding-top: 12px; padding-bottom: 12px; }
+
+    /* Notas no Mobile */
+    .notes-section textarea { font-size: 0.95em; }
+    .notes-section button { width: 100%; }
+}
