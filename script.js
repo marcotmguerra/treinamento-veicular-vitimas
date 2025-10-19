@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputDegradeTime = document.getElementById('inputDegradeTime');
     
     // --- Variáveis de Estado do Timer ---
-    let timerInterval = null; // Guarda o 'setInterval' para podermos pará-lo
+    let timerInterval = null; 
     let totalTimeInSeconds = 0;
     let degradationTimeInSeconds = 0; // Tempo DECORRIDO para a degradação
     let currentTimeInSeconds = 0;
@@ -63,10 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Compara o tempo decorrido com o tempo de degradação
         if (elapsedTimeInSeconds === degradationTimeInSeconds && !degradationAlertSent) {
             
-            // REVELA A COLUNA "AVALIAÇÃO TARDIA"
-            document.body.classList.add('show-tardia');
-            
-            // ENVIA O ALERTA
+            // ENVIA O ALERTA (REMOVIDA a linha que mostrava a coluna)
             alert("ALERTA DE DEGRADAÇÃO! O estado da vítima mudou. Reavalie os parâmetros!");
             
             degradationAlertSent = true; // Garante que o alerta só dispare uma vez
@@ -153,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
         inputTotalTime.disabled = false;
         inputDegradeTime.disabled = false;
 
-        // 5. ESCONDE A COLUNA "AVALIAÇÃO TARDIA"
-        document.body.classList.remove('show-tardia');
+        // 5. ESCONDE A COLUNA "AVALIAÇÃO TARDIA" (LINHA REMOVIDA)
+        // document.body.classList.remove('show-tardia'); // <- Esta linha foi removida.
         
         // 6. Reseta os valores dos inputs para os padrões
         inputTotalTime.value = "30";
