@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado de Vítimas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Simulado de Atendimento</h1>
+    <details class="briefing-box">
+        <summary>Clique aqui para ver o Objetivo e Pontos Importantes</summary>
+        <div>
+            <h3>Objetivo do Treinamento e Pontos Importantes</h3>
+            <p>A Cel Karina, assim como o enf Anderson,são bem meticulosos na avaliação, eles não irão distribuir pontos se o avaliado não realizar os procedimentos corretos. Ela quer ver mais. Não é só aferir o pulso, é posicionar o dedo corretamente, perguntar se tá fraco ou forte, comparar com o outro membro…ela quer ver a qualidade no atendimento. Claro, estou prevendo que as equipes serão avaliadas por ela ou pelo Anderson. Mas, de qualquer forma, essa é a chave para o sucesso.</p>
+            <p>Para as vítimas abaixo, foi pensando exatamente isso, os militares avaliados tem que extrair os parâmetros das vítimas e identificar as lesões. Com o passar do tempo, as vítimas vão alterando seus parâmetros, e eles terão que identificar e tratar isso conforme for necessário.</p>
+            <p><strong>Os APHs das duas equipes são muito bons! Mas o objetivo é extrair o 10 no atendimento.</strong></p>
+        </div>
+    </details>
+    <p>Selecione a vítima para ver os detalhes e marcar os procedimentos.</p>
+
+    <select id="seletorVitima">
+        <option value="">-- Selecione uma Vítima --</option>
+        <option value="vitima1">Vítima 1 (Grave Oculto - TCE)</option>
+        <option value="vitima2">Vítima 2 (Estável - Fratura)</option>
+        <option value="vitima3">Vítima 3 (Grave Oculto - Tórax)</option>
+        <option value="vitima4">Vítima 4 (Estável - Hemorragia)</option>
+        <option value="vitima5">Vítima 5 (Estável - Clavícula)</option>
+        <option value="vitima6">Vítima 6 (Estável - Coluna)</option>
+        <option value="vitima7">Vítima 7 (Estável - Auto Extração)</option>
+    </select>
+
+    <hr>
+
+    <div id="vitima1" class="conteudo-vitima">
+        <h3>Vítima 1 (Estado Grave Oculto - TCE)</h3>
+        <p><strong>Descrição:</strong> Traumatismo Cranioencefálico (TCE) em evolução com aumento da pressão intracraniana e início de choque hipovolêmico (hemorragia interna).</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> TCE com hematoma subdural. O choque é devido a uma laceração no fígado (hemorragia interna).</p>
+            <p><strong>Aparência:</strong> Palidez extrema, sudorese fria. Pode ter um hematoma "atrás da orelha" (Sinal de Battle) ou "olho de guaxinim".</p>
+            <p><strong>Instruções para o Ator:</strong> Inicialmente, aja calmo, mas um pouco confuso. Responda perguntas lentamente. Reclame de dor de cabeça leve. Após 10 min, comece a ficar sonolento, responda apenas a estímulos verbosos (chamar seu nome alto) e depois pare de responder.</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial (0-5 min)</th>
+                    <th>Avaliação Tardia (Após 10 min)</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>V (Responde a Verbos) -> I (Inconsciente)</td>
+                    <td><input type="checkbox" id="v1-avdi"> <label for="v1-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Escala de Coma de Glasgow</td>
+                    <td>GCS 15 (O:4, V:5, M:6)</td>
+                    <td>GCS 11 (O:2, V:3, M:6) -> GCS 8</td>
+                    <td><input type="checkbox" id="v1-gcs"> <label for="v1-gcs">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pupilas</td>
+                    <td>Anisocóricas (uma dilatada)</td>
+                    <td>Anisocoria mais pronunciada</td>
+                    <td><input type="checkbox" id="v1-pupilas"> <label for="v1-pupilas">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>110 bpm, fraco e filiforme</td>
+                    <td>130 bpm, muito fraco e filiforme</td>
+                    <td><input type="checkbox" id="v1-pulso"> <label for="v1-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>20 irpm, regular</td>
+                    <td>28 irpm, irregular (Cheyne-Stokes)</td>
+                    <td><input type="checkbox" id="v1-resp"> <label for="v1-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>110/70 mmHg (Normal/Baixa)</td>
+                    <td>90/60 mmHg (Hipotensão)</td>
+                    <td><input type="checkbox" id="v1-pa"> <label for="v1-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Oximetria (SpO2)</td>
+                    <td>96% em ar ambiente</td>
+                    <td>90% (mesmo com O2)</td>
+                    <td><input type="checkbox" id="v1-spo2"> <label for="v1-spo2">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pele (Cor/Temperatura/Umidade)</td>
+                    <td>Pálida, fria, pegajosa (sudoreica)</td>
+                    <td>Cianose leve, mais fria</td>
+                    <td><input type="checkbox" id="v1-pele"> <label for="v1-pele">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Perfusão Capilar</td>
+                    <td>Lenta (> 3 segundos)</td>
+                    <td>Muito lenta (> 5 segundos)</td>
+                    <td><input type="checkbox" id="v1-perfusao"> <label for="v1-perfusao">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Temperatura Corporal</td>
+                    <td>35.8 °C (Hipotermia leve)</td>
+                    <td>35.5 °C (Piora da hipotermia)</td>
+                    <td><input type="checkbox" id="v1-temp"> <label for="v1-temp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Queixas/Sintomas</td>
+                    <td>Dor de cabeça leve (3/10)</td>
+                    <td>Incapaz de responder</td>
+                    <td><input type="checkbox" id="v1-queixas"> <label for="v1-queixas">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="vitima2" class="conteudo-vitima">
+        <h3>Vítima 2 (Estado Estável, Mas Escandaloso)</h3>
+        <p><strong>Descrição:</strong> Fratura fechada de tíbia/fíbula, com dor intensa e ansiedade. Sem risco de vida iminente.</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada de tíbia/fíbula esquerda.</p>
+            <p><strong>Aparência:</strong> Deformidade visível na perna esquerda (inchaço e angulação). Pálido devido à dor, mas mucosas coradas.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja de forma muito ansiosa e barulhenta. Grite de dor, peça ajuda constantemente ("Me tira daqui!", "Vai doer?"). Exija ser o primeiro a ser atendido. Não deixe tocarem na sua perna sem avisar.</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial</th>
+                    <th>Avaliação Tardia</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>Estável (Alerta)</td>
+                    <td><input type="checkbox" id="v2-avdi"> <label for="v2-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Escala de Coma de Glasgow</td>
+                    <td>GCS 15</td>
+                    <td>Estável (GCS 15)</td>
+                    <td><input type="checkbox" id="v2-gcs"> <label for="v2-gcs">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>120 bpm, forte e regular</td>
+                    <td>110 bpm (leve melhora com acalmia)</td>
+                    <td><input type="checkbox" id="v2-pulso"> <label for="v2-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>24 irpm, regular</td>
+                    <td>20 irpm (mais calma)</td>
+                    <td><input type="checkbox" id="v2-resp"> <label for="v2-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>145/85 mmHg (Elevada)</td>
+                    <td>140/80 mmHg (leve melhora)</td>
+                    <td><input type="checkbox" id="v2-pa"> <label for="v2-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Oximetria (SpO2)</td>
+                    <td>99% em ar ambiente</td>
+                    <td>99% em ar ambiente</td>
+                    <td><input type="checkbox" id="v2-spo2"> <label for="v2-spo2">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Queixas/Sintomas</td>
+                    <td>Dor forte na perna esquerda (10/10)</td>
+                    <td>Dor persiste (9/10), ansiedade menor</td>
+                    <td><input type="checkbox" id="v2-queixas"> <label for="v2-queixas">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="vitima3" class="conteudo-vitima">
+        <h3>Vítima 3 (Grave Oculto - Lesão de Tórax)</h3>
+        <p><strong>Descrição:</strong> Pneumotórax Hipertensivo em desenvolvimento. Uma costela fraturada perfurou o pulmão.</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Fratura de costela (lado direito) que perfurou o pulmão, causando vazamento de ar para a cavidade torácica.</p>
+            <p><strong>Aparência:</strong> Sentado, inclinado para o lado esquerdo (para aliviar a dor). Expressão de pânico, lutando para respirar.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja com extrema ansiedade e dificuldade para respirar. Fale frases curtas ("Não consigo... respirar..."). Reclame de dor aguda no lado direito do peito. Após 10 min, comece a ficar confuso, sonolento e os lábios podem ficar azulados (se houver maquiagem).</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial (0-5 min)</th>
+                    <th>Avaliação Tardia (Após 10 min)</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta), mas muito ansioso</td>
+                    <td>V (Confuso, sonolento)</td>
+                    <td><input type="checkbox" id="v3-avdi"> <label for="v3-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Escala de Coma de Glasgow</td>
+                    <td>GCS 15</td>
+                    <td>GCS 13 (O:4, V:3, M:6)</td>
+                    <td><input type="checkbox" id="v3-gcs"> <label for="v3-gcs">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>125 bpm, fraco</td>
+                    <td>140 bpm, muito fraco (filiforme)</td>
+                    <td><input type="checkbox" id="v3-pulso"> <label for="v3-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>30 irpm, superficial</td>
+                    <td>38 irpm, muito superficial</td>
+                    <td><input type="checkbox" id="v3-resp"> <label for="v3-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>100/60 mmHg (Baixa)</td>
+                    <td>85/50 mmHg (Hipotensão grave)</td>
+                    <td><input type="checkbox" id="v3-pa"> <label for="v3-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Oximetria (SpO2)</td>
+                    <td>91% em ar ambiente</td>
+                    <td>86% (mesmo com O2)</td>
+                    <td><input type="checkbox" id="v3-spo2"> <label for="v3-spo2">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pele (Cor/Temperatura/Umidade)</td>
+                    <td>Pálida e fria</td>
+                    <td>Cianose central (lábios azuis)</td>
+                    <td><input type="checkbox" id="v3-pele"> <label for="v3-pele">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Simetria do Tórax</td>
+                    <td>Assimétrico (Direito expande menos)</td>
+                    <td>Assimetria muito evidente</td>
+                    <td><input type="checkbox" id="v3-torax"> <label for="v3-torax">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Ausculta Pulmonar</td>
+                    <td>Sons diminuídos (Direito)</td>
+                    <td>Sons abolidos (Direito)</td>
+                    <td><input type="checkbox" id="v3-ausculta"> <label for="v3-ausculta">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Sinais de Fúrcula/Traqueia</td>
+                    <td>Traqueia centrada</td>
+                    <td>Traqueia DESVIADA para a esquerda</td>
+                    <td><input type="checkbox" id="v3-traqueia"> <label for="v3-traqueia">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Veias do Pescoço (Jugular)</td>
+                    <td>Planas</td>
+                    <td>Turgência Jugular (Estufadas)</td>
+                    <td><input type="checkbox" id="v3-jugular"> <label for="v3-jugular">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="vitima4" class="conteudo-vitima">
+        <h3>Vítima 4 (Estável, Mas Chocante - Hemorragia Externa)</h3>
+        <p><strong>Descrição:</strong> Laceração profunda no couro cabeludo e fratura de antebraço. Impacto visual pelo sangue.</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Laceração no couro cabeludo (sangra muito) e fratura fechada de rádio/ulna direita.</p>
+            <p><strong>Aparência:</strong> Muito sangue no rosto e cabelo, escorrendo pela roupa. Deformidade no antebraço direito.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja ansioso e assustado com a quantidade de sangue. Pergunte "Eu vou morrer?", "Estou sangrando muito?". Reclame de dor no braço (6/10).</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial</th>
+                    <th>Avaliação Tardia</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>Estável (Alerta)</td>
+                    <td><input type="checkbox" id="v4-avdi"> <label for="v4-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>115 bpm, forte e regular</td>
+                    <td>100 bpm (após controle da hemorragia)</td>
+                    <td><input type="checkbox" id="v4-pulso"> <label for="v4-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>22 irpm, regular</td>
+                    <td>18 irpm (mais calmo)</td>
+                    <td><input type="checkbox" id="v4-resp"> <label for="v4-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>130/80 mmHg (Normal/Elevada)</td>
+                    <td>125/80 mmHg (Estável)</td>
+                    <td><input type="checkbox" id="v4-pa"> <label for="v4-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Oximetria (SpO2)</td>
+                    <td>98% em ar ambiente</td>
+                    <td>99% em ar ambiente</td>
+                    <td><input type="checkbox" id="v4-spo2"> <label for="v4-spo2">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Avaliação da Hemorragia</td>
+                    <td>Sangramento ativo, mas venoso</td>
+                    <td>Controlada com curativo compressivo</td>
+                    <td><input type="checkbox" id="v4-hemorragia"> <label for="v4-hemorragia">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="vitima5" class="conteudo-vitima">
+        <h3>Vítima 5 (Estável - Lesão Dolorosa em Membro Superior)</h3>
+        <p><strong>Descrição:</strong> Fratura fechada de clavícula e escoriações leves.</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada de clavícula direita.</p>
+            <p><strong>Aparência:</strong> Sentado, segurando o braço direito junto ao corpo (posição antálgica). Algumas escoriações no rosto e braços.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja com dor intensa (8/10) sempre que tentarem mover seu braço direito. Permaneça calmo se não for tocado, mas reclame da dor. Peça por algo para a dor.</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial</th>
+                    <th>Avaliação Tardia</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>Estável (Alerta)</td>
+                    <td><input type="checkbox" id="v5-avdi"> <label for="v5-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>95 bpm, forte e regular</td>
+                    <td>90 bpm (Estável)</td>
+                    <td><input type="checkbox" id="v5-pulso"> <label for="v5-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>18 irpm, regular</td>
+                    <td>18 irpm (Estável)</td>
+                    <td><input type="checkbox" id="v5-resp"> <label for="v5-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>135/85 mmHg</td>
+                    <td>130/80 mmHg (Estável)</td>
+                    <td><input type="checkbox" id="v5-pa"> <label for="v5-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Queixas/Sintomas</td>
+                    <td>Dor intensa (8/10) no ombro</td>
+                    <td>Dor persiste (8/10), aguardando imobilização</td>
+                    <td><input type="checkbox" id="v5-queixas"> <label for="v5-queixas">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="vitima6" class="conteudo-vitima">
+        <h3>Vítima 6 (Estável - "Andante" com Suspeita de Lesão na Coluna)</h3>
+        <p><strong>Descrição:</strong> Contusão lombar e entorse cervical ("efeito chicote"). Sem déficit neurológico.</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Lesão muscular/ligamentar na coluna cervical e lombar (sem fratura).</p>
+            <p><strong>Aparência:</strong> Andando pela cena, parecendo um pouco "atordoado" ou perdido. Sem ferimentos visíveis.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja confuso sobre o que aconteceu. Reclame de dor no pescoço e nas costas (dor "chata", 4/10). Se perguntarem, diga que bateu as costas mas conseguiu sair sozinho. Obedeça às ordens de sentar e esperar, mas pareça ansioso.</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial</th>
+                    <th>Avaliação Tardia</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>Estável (Alerta)</td>
+                    <td><input type="checkbox" id="v6-avdi"> <label for="v6-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>90 bpm, forte e regular</td>
+                    <td>85 bpm (Estável)</td>
+                    <td><input type="checkbox" id="v6-pulso"> <label for="v6-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>16 irpm, regular</td>
+                    <td>16 irpm (Estável)</td>
+                    <td><input type="checkbox" id="v6-resp"> <label for="v6-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>130/80 mmHg</td>
+                    <td>130/80 mmHg (Estável)</td>
+                    <td><input type="checkbox" id="v6-pa"> <label for="v6-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Avaliação Neurológica</td>
+                    <td>Força e sensibilidade preservadas</td>
+                    <td>Sem alterações</td>
+                    <td><input type="checkbox" id="v6-neuro"> <label for="v6-neuro">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Queixas/Sintomas</td>
+                    <td>Dor no pescoço e costas (4/10)</td>
+                    <td>Dor persiste (4/10), aguardando prancha</td>
+                    <td><input type="checkbox"id="v6-queixas"> <label for="v6-queixas">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="vitima7" class="conteudo-vitima">
+        <h3>Vítima 7 (Estável - Auto Extração Assistida)</h3>
+        <p><strong>Descrição:</strong> Dor no braço direito, suspeita de fratura fechada no rádio/ulna (antebraço direito).</p>
+        
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada do antebraço direito (rádio/ulna).</p>
+            <p><strong>Aparência:</strong> Calmo, mas com dor. Segurando o antebraço direito. Saiu do carro com ajuda ou sozinho.</p>
+            <p><strong>Instruções para o Ator:</strong> Aja calmamente, mas deixe claro que seu braço dói (7/10). Siga as instruções da equipe de resgate. Pergunte sobre as outras vítimas. Cumpra o papel de "vítima verde" (estável).</p>
+        </div>
+
+        <h4>Evolução dos Parâmetros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Avaliação Inicial</th>
+                    <th>Avaliação Tardia</th>
+                    <th>Procedimento Feito?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nível de Consciência (AVDI)</td>
+                    <td>A (Alerta)</td>
+                    <td>Estável (Alerta)</td>
+                    <td><input type="checkbox" id="v7-avdi"> <label for="v7-avdi">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pulso</td>
+                    <td>100 bpm, forte e regular</td>
+                    <td>95 bpm (Estável)</td>
+                    <td><input type="checkbox" id="v7-pulso"> <label for="v7-pulso">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Respiração (Frequência/Padrão)</td>
+                    <td>20 irpm, regular</td>
+                    <td>18 irpm (Estável)</td>
+                    <td><input type="checkbox" id="v7-resp"> <label for="v7-resp">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Pressão Arterial (PA)</td>
+                    <td>140/90 mmHg</td>
+                    <td>135/85 mmHg (Estável)</td>
+                    <td><input type="checkbox" id="v7-pa"> <label for="v7-pa">Verificado</label></td>
+                </tr>
+                <tr>
+                    <td>Queixas/Sintomas</td>
+                    <td>Dor e edema no antebraço direito</td>
+                    <td>Dor persiste (7/10), aguardando imobilização</td>
+                    <td><input type="checkbox" id="v7-extrem"> <label for="v7-extrem">Verificado</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
