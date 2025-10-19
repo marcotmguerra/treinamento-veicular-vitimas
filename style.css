@@ -8,6 +8,103 @@ h1 {
     color: #333;
 }
 
+/* --- NOVOS ESTILOS PAINEL DE CONTROLO CONFIGURÁVEL --- */
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Para o mobile */
+    gap: 20px; /* Espaço entre os elementos */
+}
+
+.timer-config {
+    display: flex;
+    gap: 15px; /* Espaço entre os inputs */
+}
+.timer-config div {
+    display: flex;
+    flex-direction: column;
+}
+.timer-config label {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.timer-config input[type="number"] {
+    width: 70px; /* Largura dos campos de tempo */
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.timer-actions {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.timer-display-box {
+    text-align: right;
+}
+.timer-display-box p {
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#timerDisplay {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333; /* Cor padrão */
+}
+
+/* NOVA CLASSE para o aviso de 5 minutos */
+#timerDisplay.timer-warning {
+    color: #d9534f; /* Vermelho */
+    animation: pulse 1s infinite;
+}
+
+/* Animação de pulsar */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Estilo genérico dos botões */
+#btnStartTimer, #btnReset {
+    font-size: 1em;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#btnStartTimer {
+    background-color: #5cb85c; /* Verde */
+    color: white;
+}
+
+#btnStartTimer:disabled,
+.timer-config input:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#btnReset {
+    background-color: #f0ad4e; /* Laranja/Amarelo */
+    color: white;
+}
+/* --- FIM DOS NOVOS ESTILOS --- */
+
+
 /* Bloco de briefing 'details' */
 .briefing-box {
     background-color: #fff;
@@ -82,13 +179,29 @@ th {
     background-color: #f0f0f0;
 }
 
+/* --- LARGURAS E LÓGICA DE ESCONDER/MOSTRAR (DESKTOP) --- */
 /* Larguras para Desktop */
-table th:nth-child(2), table th:nth-child(3) {
+table th:nth-child(2) { 
     width: 35%; 
 }
-table th:nth-child(4) {
+table th:nth-child(4) { 
     width: 15%;
 }
+
+/* 1. Por Padrão: ESCONDE a 3ª coluna (Avaliação Tardia) */
+table th:nth-child(3),
+table td:nth-child(3) {
+    display: none;
+    width: 35%; /* Define a largura mesmo estando escondida */
+}
+
+/* 2. Quando a classe .show-tardia é adicionada ao body: MOSTRA a 3ª coluna */
+body.show-tardia table th:nth-child(3),
+body.show-tardia table td:nth-child(3) {
+    display: table-cell; /* Reverte para o padrão de tabela */
+}
+/* --- FIM DAS REGRAS DA TABELA DESKTOP --- */
+
 
 /* Cores dos Títulos */
 #vitima1 h3, #vitima3 h3 {
@@ -127,6 +240,34 @@ select {
         padding: 10px;
     }
 
+    /* --- Painel de Controlo responsivo --- */
+    .control-panel {
+        flex-direction: column; /* Empilha os controlos */
+        align-items: stretch; /* Faz tudo ocupar a largura */
+        gap: 15px; 
+    }
+    .timer-config {
+        justify-content: space-around; /* Distribui os inputs */
+    }
+    .timer-config input[type="number"] {
+        width: 100px; /* Mais largo no mobile */
+    }
+    .timer-actions {
+        flex-direction: column; /* Empilha os botões */
+        width: 100%;
+    }
+    .timer-display-box {
+        text-align: center;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    #timerDisplay {
+        font-size: 2.2em;
+    }
+    /* --- FIM DA ATUALIZAÇÃO RESPONSIVA DO PAINEL --- */
+
+
     /* --- A MÁGICA DA TABELA --- */
     
     
@@ -162,9 +303,8 @@ select {
         padding-bottom: 10px;
     }
     
-    /* ----- INÍCIO DA ALTERAÇÃO ----- */
-    /* Adiciona rótulos de texto às células de avaliação */
-
+    /* --- LÓGICA DE RÓTULOS E ESCONDER/MOSTRAR (MOBILE) --- */
+    
     /* Estilo para a "Avaliação Inicial" (a 2ª célula da linha) */
     table td:nth-child(2)::before {
         content: "Inicial: "; /* O texto que será inserido */
@@ -173,18 +313,29 @@ select {
         margin-right: 5px; /* Espaçamento entre o rótulo e o valor */
     }
     
-    /* Estilo para a "Avaliação Tardia" (a 3ª célula da linha) */
+    /* 1. Por Padrão: ESCONDE a 3ª célula (Avaliação Tardia) */
+    table td:nth-child(3) {
+        display: none; 
+    }
+    
+    /* 2. Quando a classe .show-tardia é adicionada ao body: MOSTRA a 3ª célula */
+    body.show-tardia table td:nth-child(3) {
+        display: block; /* Reverte para o padrão mobile */
+    }
+
+    /* O rótulo da 3ª célula (só aparece quando ela é mostrada) */
     table td:nth-child(3)::before {
         content: "Tardia: "; /* O texto que será inserido */
         font-weight: bold;
         color: #d9534f; /* O mesmo vermelho 'grave' para destaque */
         margin-right: 5px;
     }
+    /* --- FIM DA LÓGICA MOBILE --- */
+
 
     /* Opcional: Alinha a célula "Procedimento Feito?" */
     table td:nth-child(4) {
          padding-top: 15px; 
          padding-bottom: 15px;
     }
-    /* ----- FIM DA ALTERAÇÃO ----- */
 }
