@@ -2,16 +2,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Seletores de Elementos ---
-    const seletor = document.getElementById('seletorVitima'); // Pode ser null nas novas páginas
-    
-    // Elementos do Timer (Comuns a todas as páginas)
+    const seletor = document.getElementById('seletorVitima');
     const btnStartTimer = document.getElementById('btnStartTimer');
     const btnReset = document.getElementById('btnReset');
     const timerDisplay = document.getElementById('timerDisplay');
     const inputTotalTime = document.getElementById('inputTotalTime');
     const inputDegradeTime = document.getElementById('inputDegradeTime');
-
-    // Elementos das Notas (Só existem em comando.html e tecnicos.html)
     const noteInput = document.getElementById('noteInput');
     const addNoteButton = document.getElementById('addNoteButton');
     const notesDisplay = document.getElementById('notesDisplay');
@@ -19,49 +15,94 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Variáveis de Estado ---
     let timerInterval = null; 
     let totalTimeInSeconds = 0;
-    let degradationTimeInSeconds = 0; // Tempo a ser ATINGIDO para a degradação/evento
-    let currentTimeInSeconds = 0; // Começa em 0 para contagem crescente
+    let degradationTimeInSeconds = 0;
+    let currentTimeInSeconds = 0;
     let degradationAlertSent = false;
-    let fiveMinuteWarningMark = 0; // Tempo a ser ATINGIDO para o aviso
-    const fiveMinuteMarkInSeconds = 5 * 60; // 300 segundos (para cálculo)
-    let notes = []; // Array para guardar as notas { text: "...", timestamp: "MM:SS" }
+    let fiveMinuteWarningMark = 0;
+    const fiveMinuteMarkInSeconds = 5 * 60;
+    let notes = [];
 
-    // --- LÓGICA DE MOSTRAR/ESCONDER VÍTIMA (Só roda se o seletor existir) ---
+    // --- LÓGICA DE MOSTRAR/ESCONDER VÍTIMA ---
     if (seletor) {
         seletor.addEventListener('change', function() {
             const idVitimaSelecionada = seletor.value;
             const todosConteudos = document.querySelectorAll('.conteudo-vitima');
-            
-            todosConteudos.forEach(function(conteudo) {
-                conteudo.classList.remove('active');
-            });
-
+            todosConteudos.forEach(conteudo => conteudo.classList.remove('active'));
             if (idVitimaSelecionada) {
                 const vitimaParaMostrar = document.getElementById(idVitimaSelecionada);
                 if (vitimaParaMostrar) {
                     vitimaParaMostrar.classList.add('active');
+                    // Ao selecionar nova vítima, reseta para a aba primária
+                    resetToPrimaryTab(vitimaParaMostrar); 
                 }
             }
         });
     }
 
+    // --- NOVA LÓGICA DAS ABAS DE AVALIAÇÃO ---
+    const allTabButtons = document.querySelectorAll('.tab-button');
+
+    allTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Encontra o container pai da vítima atual
+            const currentVictimContainer = this.closest('.conteudo-vitima');
+            if (!currentVictimContainer) return;
+
+            // Encontra os botões e conteúdos DENTRO do container da vítima atual
+            const currentTabs = currentVictimContainer.querySelectorAll('.tab-button');
+            const currentContents = currentVictimContainer.querySelectorAll('.tab-content');
+            
+            // Pega o alvo (ex: 'primary-assessment' ou 'secondary-assessment') do botão clicado
+            const targetContentClass = this.getAttribute('data-target');
+
+            // Remove 'active' de todos os botões e conteúdos desta vítima
+            currentTabs.forEach(tab => tab.classList.remove('active'));
+            currentContents.forEach(content => content.classList.remove('active'));
+
+            // Adiciona 'active' ao botão clicado
+            this.classList.add('active');
+
+            // Adiciona 'active' ao conteúdo correspondente
+            const targetContent = currentVictimContainer.querySelector(`.tab-content.${targetContentClass}`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+
+    // Função auxiliar para resetar para a aba primária ao mudar de vítima
+    function resetToPrimaryTab(victimContainer) {
+         const tabs = victimContainer.querySelectorAll('.tab-button');
+         const contents = victimContainer.querySelectorAll('.tab-content');
+         
+         tabs.forEach(tab => tab.classList.remove('active'));
+         contents.forEach(content => content.classList.remove('active'));
+
+         // Ativa o primeiro botão (Primária) e seu conteúdo
+         const primaryTabButton = victimContainer.querySelector('.tab-button[data-target="primary-assessment"]');
+         const primaryTabContent = victimContainer.querySelector('.tab-content.primary-assessment');
+         
+         if (primaryTabButton) primaryTabButton.classList.add('active');
+         if (primaryTabContent) primaryTabContent.classList.add('active');
+    }
+    // --- FIM LÓGICA DAS ABAS ---
+
+
     // --- LÓGICA DO TIMER (CONTADOR CRESCENTE) ---
-
-    // Função que atualiza o relógio a cada segundo
     function updateTimerDisplay() {
-        currentTimeInSeconds++; // Incrementa o tempo decorrido
+        // (Lógica do timer crescente - idêntica à versão anterior)
+        if (currentTimeInSeconds >= totalTimeInSeconds) return; // Para se já atingiu o total
 
-        // Formata os segundos para MM:SS
+        currentTimeInSeconds++; 
+
         let minutes = Math.floor(currentTimeInSeconds / 60);
         let seconds = currentTimeInSeconds % 60;
-        minutes = minutes < 10 ? '0' + minutes : minutes; // Adiciona zero à esquerda min
-        seconds = seconds < 10 ? '0' + seconds : seconds; // Adiciona zero à esquerda seg
+        minutes = minutes < 10 ? '0' + minutes : minutes; 
+        seconds = seconds < 10 ? '0' + seconds : seconds; 
 
         timerDisplay.textContent = `${minutes}:${seconds}`;
 
-        // --- VERIFICAÇÕES DE EVENTOS ---
-        
-        // 1. Alerta de Degradação/Evento (Quando o tempo ATINGE o valor definido)
+        // Alerta de Degradação/Evento
         if (currentTimeInSeconds === degradationTimeInSeconds && !degradationAlertSent) {
             const alertMessage = seletor ? 
                 "ALERTA DE DEGRADAÇÃO! O estado da vítima mudou. Reavalie os parâmetros!" :
@@ -70,35 +111,31 @@ document.addEventListener('DOMContentLoaded', function() {
             degradationAlertSent = true;
         }
 
-        // 2. Aviso de 5 Minutos Restantes (Quando o tempo ATINGE Total - 5 min)
-        // Só faz sentido se o tempo total for maior que 5 min
+        // Aviso de 5 Minutos Restantes
         if (totalTimeInSeconds > fiveMinuteMarkInSeconds && currentTimeInSeconds === fiveMinuteWarningMark) {
             timerDisplay.classList.add('timer-warning');
-            // Poderia adicionar um alerta aqui também se quisesse
-            // alert("Aviso: Faltam 5 minutos para o tempo total!"); 
         }
 
-        // 3. Fim do Tempo (Quando o tempo ATINGE o total definido)
-        if (currentTimeInSeconds >= totalTimeInSeconds) { // Usa >= para garantir que pare
+        // Fim do Tempo
+        if (currentTimeInSeconds >= totalTimeInSeconds) { 
             clearInterval(timerInterval); 
             timerInterval = null;
-            // Garante que o display mostre exatamente o tempo total
             let finalMinutes = Math.floor(totalTimeInSeconds / 60);
             let finalSeconds = totalTimeInSeconds % 60;
             finalMinutes = finalMinutes < 10 ? '0' + finalMinutes : finalMinutes;
             finalSeconds = finalSeconds < 10 ? '0' + finalSeconds : finalSeconds;
             timerDisplay.textContent = `${finalMinutes}:${finalSeconds}`;
             
-            timerDisplay.classList.remove('timer-warning'); // Remove o aviso caso termine
-            btnStartTimer.disabled = true; // Mantém desabilitado
+            timerDisplay.classList.remove('timer-warning'); 
+            btnStartTimer.disabled = true; 
             inputTotalTime.disabled = true;
             inputDegradeTime.disabled = true;
             alert("TEMPO TOTAL ESGOTADO!");
         }
     }
 
-    // Função para INICIAR o simulado
     function startSimulator() {
+        // (Lógica de startSimulator - idêntica à versão anterior)
         let totalMinutes = parseInt(inputTotalTime.value);
         let degradeMinutes = parseInt(inputDegradeTime.value);
 
@@ -111,12 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         totalTimeInSeconds = totalMinutes * 60;
         degradationTimeInSeconds = degradeMinutes * 60;
-        fiveMinuteWarningMark = totalTimeInSeconds - fiveMinuteMarkInSeconds; // Calcula o marco para o aviso
-        currentTimeInSeconds = 0; // Começa em zero
+        fiveMinuteWarningMark = totalTimeInSeconds - fiveMinuteMarkInSeconds; 
+        currentTimeInSeconds = 0; 
         degradationAlertSent = false; 
 
         timerDisplay.classList.remove('timer-warning');
-        timerDisplay.textContent = "00:00"; // Display inicial
+        timerDisplay.textContent = "00:00"; 
 
         btnStartTimer.disabled = true;
         inputTotalTime.disabled = true;
@@ -124,28 +161,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (timerInterval) clearInterval(timerInterval);
         // Roda a função uma vez imediatamente para mostrar 00:01 logo ao clicar
-        updateTimerDisplay(); 
+        // Correção: Não chamar update logo de cara para começar em 00:00
+        // updateTimerDisplay(); 
         timerInterval = setInterval(updateTimerDisplay, 1000); 
     }
 
-    // --- LÓGICA DO RESET (Comum, agora inclui resetar notas) ---
+    // --- LÓGICA DO RESET ---
     function resetSimulator() {
-        // Limpa checkboxes
-        const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        // (Lógica de resetSimulator - idêntica à versão anterior)
+         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
         allCheckboxes.forEach(cb => cb.checked = false);
 
-        // Para timer
         clearInterval(timerInterval);
         timerInterval = null;
 
-        // Reseta tempos
         currentTimeInSeconds = 0;
         totalTimeInSeconds = 0;
         degradationTimeInSeconds = 0;
         fiveMinuteWarningMark = 0;
         degradationAlertSent = false;
 
-        // Reseta display e botões
         timerDisplay.textContent = "--:--";
         timerDisplay.classList.remove('timer-warning');
         btnStartTimer.disabled = false;
@@ -154,23 +189,24 @@ document.addEventListener('DOMContentLoaded', function() {
         inputTotalTime.value = "30";
         inputDegradeTime.value = "10";
 
-        // Limpa notas
         notes = [];
         renderNotes(); 
         if (noteInput) noteInput.value = ""; 
+
+        // Reseta todas as vítimas visíveis para a aba primária
+        const allVictimContainers = document.querySelectorAll('.conteudo-vitima');
+        allVictimContainers.forEach(container => resetToPrimaryTab(container));
     }
 
-    // --- LÓGICA DAS NOTAS (Só roda se os elementos existirem) ---
+    // --- LÓGICA DAS NOTAS ---
     function renderNotes() {
+        // (Lógica de renderNotes - idêntica à versão anterior)
         if (!notesDisplay) return; 
-
         notesDisplay.innerHTML = ""; 
-
         if (notes.length === 0) {
             notesDisplay.innerHTML = "<p>Nenhuma nota adicionada ainda.</p>";
             return;
         }
-
         for (let i = notes.length - 1; i >= 0; i--) {
             const note = notes[i];
             const noteElement = document.createElement('div');
@@ -182,17 +218,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addNote() {
+        // (Lógica de addNote - idêntica à versão anterior)
         if (!noteInput || !timerDisplay) return; 
-
         const text = noteInput.value.trim();
-        const timestamp = timerDisplay.textContent; // Pega o tempo ATUAL (crescente) do display
-
-        // Não adiciona nota se o texto estiver vazio ou o timer não iniciado
+        const timestamp = timerDisplay.textContent; 
         if (text === "" || timestamp === "--:--") {
             alert("Por favor, digite uma nota e inicie o simulador para registrar o tempo.");
             return;
         }
-
         notes.push({ text: text, timestamp: timestamp });
         noteInput.value = ""; 
         renderNotes(); 
