@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Vítimas</title>
+    <title>Simulador - Vítimas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,923 +13,634 @@
         <a href="comando.html">Comando</a>
         <a href="tecnicos.html">Técnicos</a>
     </nav>
+
     <h1>Simulador de Vítimas - Salvamento Veicular</h1>
 
     <div class="control-panel">
-    
         <div class="timer-config">
             <div>
                 <label for="inputTotalTime">Tempo Total (min):</label>
                 <input type="number" id="inputTotalTime" value="30" min="1">
             </div>
             <div>
-                <label for="inputDegradeTime">Degradação em (min):</label>
+                <label for="inputDegradeTime">Degradação/Evento (min):</label>
                 <input type="number" id="inputDegradeTime" value="10" min="1">
             </div>
         </div>
-        
         <div class="timer-actions">
             <button id="btnStartTimer">▶ Iniciar Simulado</button>
             <button id="btnReset">Limpar / Resetar</button>
         </div>
-        
         <div class="timer-display-box">
-            <p>Tempo Restante:</p>
+            <p>Tempo Decorrido:</p>
             <span id="timerDisplay">--:--</span>
         </div>
-    
     </div>
     <details class="briefing-box">
         <summary>Clique aqui para ver o Objetivo e Pontos Importantes</summary>
         <div>
             <h3>Objetivo do Treinamento e Pontos Importantes</h3>
-            <p>A avaliação inicial das equipes é muito boa, porém a avaliação segundária pode ser aprimorada. Os avaliadores costumam ser bastante exigentes e atentos aos detalhes, valorizando não apenas a execução do procedimento, mas também a forma como ele é realizado. Não basta aferir o pulso — é preciso posicionar corretamente os dedos, avaliar a intensidade, comparar com o outro membro e demonstrar segurança e qualidade no atendimento. Essa atenção e cuidado em cada ação são fundamentais para alcançar uma avaliação de excelência.</p>
+            <p>A Cel Karina, assim como o enf Anderson,são bem meticulosos na avaliação, eles não irão distribuir pontos se o avaliado não realizar os procedimentos corretos. Ela quer ver mais. Não é só aferir o pulso, é posicionar o dedo corretamente, perguntar se tá fraco ou forte, comparar com o outro membro…ela quer ver a qualidade no atendimento. Claro, estou prevendo que as equipes serão avaliadas por ela ou pelo Anderson. Mas, de qualquer forma, essa é a chave para o sucesso.</p>
             <p>Para as vítimas abaixo, foi pensando exatamente isso, os militares avaliados tem que extrair os parâmetros das vítimas e identificar as lesões. Com o passar do tempo, as vítimas vão alterando seus parâmetros, e eles terão que identificar e tratar isso conforme for necessário.</p>
             <p><strong>Os APHs das duas equipes são muito bons! Mas o objetivo é extrair o 10 no atendimento.</strong></p>
-        </div>
+       </div>
     </details>
     <p>Selecione a vítima para ver os detalhes e marcar os procedimentos.</p>
 
     <select id="seletorVitima">
         <option value="">-- Selecione uma Vítima --</option>
-        <option value="vitima1">Vítima 1 (Grave Oculto - TCE)</option>
+        <option value="vitima1">Vítima 1 (Grave - TCE)</option>
         <option value="vitima2">Vítima 2 (Estável - Fratura)</option>
-        <option value="vitima3">Vítima 3 (Grave Oculto - Tórax)</option>
+        <option value="vitima3">Vítima 3 (Grave - Tórax)</option>
         <option value="vitima4">Vítima 4 (Estável - Hemorragia)</option>
         <option value="vitima5">Vítima 5 (Estável - Clavícula)</option>
         <option value="vitima6">Vítima 6 (Estável - Coluna)</option>
         <option value="vitima7">Vítima 7 (Estável - Auto Extração)</option>
-    </select>
+        <option value="vitima8">Vítima 8 (Grave - Abdômen)</option> </select>
 
     <hr>
 
     <section class="notes-section">
         <h2>Notas Gerais sobre o Atendimento às Vítimas</h2>
         <textarea id="noteInput" rows="4" placeholder="Digite sua observação geral aqui (ex: Demora na triagem, Boa comunicação entre equipes, etc.)..."></textarea>
-        <button id="addNoteButton">Adicionar Nota</button>
+        <button id="addNoteButton">Adicionar Nota (Registra Tempo)</button>
         <h3>Notas Registradas:</h3>
         <div id="notesDisplay">
             <p>Nenhuma nota adicionada ainda.</p>
         </div>
-    </section>
-
-    <div id="vitima1" class="conteudo-vitima">
-        <h3>Vítima 1 (Estado Grave Oculto - TCE)</h3>
-        <p><strong>Descrição:</strong> Traumatismo Cranioencefálico (TCE) em evolução...</p>
+   </section>
+    <hr> <div id="vitima1" class="conteudo-vitima">
+        <h3>Vítima 1 (Grave - TCE)</h3>
+        <p><strong>Descrição:</strong> TCE em evolução com aumento da PIC e choque hipovolêmico (hemorragia interna).</p>
         <div class="detalhe-ator">
-            <p><strong>Condição Clínica Subjacente:</strong> TCE com hematoma subdural. O choque é devido a uma laceração no fígado (hemorragia interna).</p>
-            <p><strong>Aparência:</strong> Palidez extrema, sudorese fria. Pode ter um hematoma "atrás da orelha" (Sinal de Battle) ou "olho de guaxinim".</p>
-            <p><strong>Instruções para o Ator:</strong> Inicialmente, aja calmo, mas um pouco confuso. Responda perguntas lentamente. Reclame de dor de cabeça leve. Após 10 min, comece a ficar sonolento, responda apenas a estímulos verbosos (chamar seu nome alto) e depois pare de responder.</p>
+             <p><strong>Condição Clínica:</strong> TCE com hematoma subdural. Choque por laceração hepática.</p>
+            <p><strong>Aparência:</strong> Palidez, sudorese fria. Sinal de Battle/Guaxinim pode estar presente.</p>
+            <p><strong>Instruções Ator:</strong> Calmo->confuso->sonolento->não responde verbal->não responde dor.</p>
        </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial (0-5 min)</th>
-                    <th>Avaliação Tardia (Após 10 min)</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>V (Responde a Verbos) -> I (Inconsciente)</td>
-                    <td><input type="checkbox" id="v1-avdi"> <label for="v1-avdi">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15 (O:4, V:5, M:6)</td>
-                    <td>GCS 11 (O:2, V:3, M:6) -> GCS 8</td>
-                    <td><input type="checkbox" id="v1-gcs"> <label for="v1-gcs">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia, sem ruídos</td>
-                    <td>Roncos (obstrução parcial pela língua)</td>
-                    <td><input type="checkbox" id="v1-airway"> <label for="v1-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>20 irpm, regular</td>
-                    <td>28 irpm, irregular (Cheyne-Stokes)</td>
-                    <td><input type="checkbox" id="v1-resp"> <label for="v1-resp">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>Murmúrio Vesicular Presente Bilateralmente (MVPB)</td>
-                    <td>MVPB, roncos de transmissão</td>
-                    <td><input type="checkbox" id="v1-ausculta"> <label for="v1-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>110 bpm, fraco, filiforme, R=L</td>
-                    <td>130 bpm, muito fraco, filiforme, R=L</td>
-                    <td><input type="checkbox" id="v1-pulso"> <label for="v1-pulso">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausência de hemorragias externas visíveis</td>
-                    <td>(N/A Externamente)</td>
-                    <td><input type="checkbox" id="v1-hemorragia"> <label for="v1-hemorragia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Pálida, fria, pegajosa</td>
-                    <td>Cianose leve, mais fria</td>
-                    <td><input type="checkbox" id="v1-pele"> <label for="v1-pele">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Perfusão Capilar</td>
-                    <td>Lenta (> 3 seg)</td>
-                    <td>Muito lenta (> 5 seg)</td>
-                    <td><input type="checkbox" id="v1-perfusao"> <label for="v1-perfusao">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>110/70 mmHg</td>
-                    <td>90/60 mmHg (Hipotensão)</td>
-                    <td><input type="checkbox" id="v1-pa"> <label for="v1-pa">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>96% em ar ambiente</td>
-                    <td>90% (mesmo com O2)</td>
-                    <td><input type="checkbox" id="v1-spo2"> <label for="v1-spo2">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pupilas</td>
-                    <td>Anisocóricas (uma dilatada)</td>
-                    <td>Anisocoria mais pronunciada</td>
-                    <td><input type="checkbox" id="v1-pupilas"> <label for="v1-pupilas">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Sem deformidades aparentes</td>
-                    <td>Sem alterações</td>
-                    <td><input type="checkbox" id="v1-face"> <label for="v1-face">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v1-traqueia"> <label for="v1-traqueia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>110 mg/dL</td>
-                    <td>95 mg/dL</td>
-                    <td><input type="checkbox" id="v1-glicemia"> <label for="v1-glicemia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Temperatura Corporal</td>
-                    <td>35.8 °C (Hipotermia leve)</td>
-                    <td>35.5 °C (Piora)</td>
-                    <td><input type="checkbox" id="v1-temp"> <label for="v1-temp">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Refere cefaleia (3/10)</td>
-                    <td>Incapaz de responder</td>
-                    <td><input type="checkbox" id="v1-dor"> <label for="v1-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div id="vitima2" class="conteudo-vitima">
-         <h3>Vítima 2 (Estado Estável, Mas Escandaloso)</h3>
-        <p><strong>Descrição:</strong> Fratura fechada de tíbia/fíbula...</p>
-        <div class="detalhe-ator">
-             <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada de tíbia/fíbula esquerda.</p>
-            <p><strong>Aparência:</strong> Deformidade visível na perna esquerda (inchaço e angulação). Pálido devido à dor, mas mucosas coradas.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja de forma muito ansiosa e barulhenta. Grite de dor, peça ajuda constantemente ("Me tira daqui!", "Vai doer?"). Exija ser o primeiro a ser atendido. Não deixe tocarem na sua perna sem avisar.</p>
-       </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-            <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial</th>
-                    <th>Avaliação Tardia</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>Estável (Alerta)</td>
-                    <td><input type="checkbox" id="v2-avdi"> <label for="v2-avdi">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>Estável (GCS 15)</td>
-                    <td><input type="checkbox" id="v2-gcs"> <label for="v2-gcs">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia, sem ruídos</td>
-                    <td>Pérvia</td>
-                    <td><input type="checkbox" id="v2-airway"> <label for="v2-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>24 irpm, regular</td>
-                    <td>20 irpm (mais calma)</td>
-                    <td><input type="checkbox" id="v2-resp"> <label for="v2-resp">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>MVPB</td>
-                    <td>MVPB</td>
-                    <td><input type="checkbox" id="v2-ausculta"> <label for="v2-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>120 bpm, forte, regular, R=L</td>
-                    <td>110 bpm, forte, regular, R=L</td>
-                    <td><input type="checkbox" id="v2-pulso"> <label for="v2-pulso">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausentes</td>
-                    <td>Ausentes</td>
-                    <td><input type="checkbox" id="v2-hemorragia"> <label for="v2-hemorragia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Pálida (dor), quente, seca</td>
-                    <td>Corada, quente, seca</td>
-                    <td><input type="checkbox" id="v2-pele"> <label for="v2-pele">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Perfusão Capilar</td>
-                    <td> < 2 seg</td>
-                    <td> < 2 seg</td>
-                    <td><input type="checkbox" id="v2-perfusao"> <label for="v2-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>145/85 mmHg</td>
-                    <td>140/80 mmHg</td>
-                    <td><input type="checkbox" id="v2-pa"> <label for="v2-pa">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>99% em ar ambiente</td>
-                    <td>99%</td>
-                    <td><input type="checkbox" id="v2-spo2"> <label for="v2-spo2">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v2-pupilas"> <label for="v2-pupilas">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Sem deformidades</td>
-                    <td>Sem deformidades</td>
-                    <td><input type="checkbox" id="v2-face"> <label for="v2-face">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v2-traqueia"> <label for="v2-traqueia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>130 mg/dL (stress)</td>
-                    <td>125 mg/dL</td>
-                    <td><input type="checkbox" id="v2-glicemia"> <label for="v2-glicemia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor intensa (10/10) na perna esquerda</td>
-                    <td>Dor persiste (9/10)</td>
-                    <td><input type="checkbox" id="v2-dor"> <label for="v2-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div id="vitima3" class="conteudo-vitima">
-        <h3>Vítima 3 (Grave Oculto - Lesão de Tórax)</h3>
-        <p><strong>Descrição:</strong> Pneumotórax Hipertensivo em desenvolvimento...</p>
-        <div class="detalhe-ator">
-            <p><strong>Condição Clínica Subjacente:</strong> Fratura de costela (lado direito) que perfurou o pulmão, causando vazamento de ar para a cavidade torácica.</p>
-            <p><strong>Aparência:</strong> Sentado, inclinado para o lado esquerdo (para aliviar a dor). Expressão de pânico, lutando para respirar.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja com extrema ansiedade e dificuldade para respirar. Fale frases curtas ("Não consigo... respirar..."). Reclame de dor aguda no lado direito do peito. Após 10 min, comece a ficar confuso, sonolento e os lábios podem ficar azulados (se houver maquiagem).</p>
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
         </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-             <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial (0-5 min)</th>
-                    <th>Avaliação Tardia (Após 10 min)</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta), ansioso</td>
-                    <td>V (Confuso, sonolento)</td>
-                    <td><input type="checkbox" id="v3-avdi"> <label for="v3-avdi">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>GCS 13 (O:4, V:3, M:6)</td>
-                    <td><input type="checkbox" id="v3-gcs"> <label for="v3-gcs">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia, mas taquipneico</td>
-                    <td>Pérvia, respiração muito rápida</td>
-                    <td><input type="checkbox" id="v3-airway"> <label for="v3-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>30 irpm, superficial</td>
-                    <td>38 irpm, muito superficial</td>
-                    <td><input type="checkbox" id="v3-resp"> <label for="v3-resp">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>Sons diminuídos à Direita</td>
-                    <td>Sons ABOLIDOS à Direita</td>
-                    <td><input type="checkbox" id="v3-ausculta"> <label for="v3-ausculta">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Simetria do Tórax</td>
-                    <td>Assimétrico (Direito expande menos)</td>
-                    <td>Assimetria muito evidente</td>
-                    <td><input type="checkbox" id="v3-torax"> <label for="v3-torax">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>125 bpm, fraco, R=L</td>
-                    <td>140 bpm, muito fraco (filiforme), R=L</td>
-                    <td><input type="checkbox" id="v3-pulso"> <label for="v3-pulso">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausentes</td>
-                    <td>Ausentes</td>
-                    <td><input type="checkbox" id="v3-hemorragia"> <label for="v3-hemorragia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Pálida, fria</td>
-                    <td>Cianose central (lábios azuis)</td>
-                    <td><input type="checkbox" id="v3-pele"> <label for="v3-pele">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Perfusão Capilar</td>
-                    <td>Lenta (> 3 seg)</td>
-                    <td>Muito lenta (> 5 seg)</td>
-                    <td><input type="checkbox" id="v3-perfusao"> <label for="v3-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>100/60 mmHg</td>
-                    <td>85/50 mmHg (Hipotensão grave)</td>
-                    <td><input type="checkbox" id="v3-pa"> <label for="v3-pa">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>91% em ar ambiente</td>
-                    <td>86% (mesmo com O2)</td>
-                    <td><input type="checkbox" id="v3-spo2"> <label for="v3-spo2">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v3-pupilas"> <label for="v3-pupilas">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Sem deformidades</td>
-                    <td>Sem deformidades</td>
-                    <td><input type="checkbox" id="v3-face"> <label for="v3-face">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>DESVIADA para Esquerda</td>
-                    <td><input type="checkbox" id="v3-traqueia"> <label for="v3-traqueia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Veias do Pescoço (Jugular)</td>
-                    <td>Planas</td>
-                    <td>Turgência Jugular (Estufadas)</td>
-                    <td><input type="checkbox" id="v3-jugular"> <label for="v3-jugular">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>120 mg/dL</td>
-                    <td>110 mg/dL</td>
-                    <td><input type="checkbox" id="v3-glicemia"> <label for="v3-glicemia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor torácica D (9/10), dispneia</td>
-                    <td>Dispneia intensa, incapaz de focar na dor</td>
-                    <td><input type="checkbox" id="v3-dor"> <label for="v3-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div id="vitima4" class="conteudo-vitima">
-        <h3>Vítima 4 (Estável, Mas Chocante - Hemorragia Externa)</h3>
-        <p><strong>Descrição:</strong> Laceração profunda no couro cabeludo...</p>
-        <div class="detalhe-ator">
-            <p><strong>Condição Clínica Subjacente:</strong> Laceração no couro cabeludo (sangra muito) e fratura fechada de rádio/ulna direita.</p>
-            <p><strong>Aparência:</strong> Muito sangue no rosto e cabelo, escorrendo pela roupa. Deformidade no antebraço direito.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja ansioso e assustado com a quantidade de sangue. Pergunte "Eu vou morrer?", "Estou sangrando muito?". Reclame de dor no braço (6/10).</p>
+        <div class="tab-content primary-assessment active">
+            <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial (0-5 min)</th>
+                        <th>Avaliação Tardia (Após 10 min)</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <tr>
+                        <td><b>X</b> - Hemorragia Exsanguinante</td>
+                        <td>Ausente externamente</td>
+                        <td>(N/A Externamente)</td>
+                        <td><input type="checkbox" id="v1-x"> <label for="v1-x">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td>
+                        <td>Pérvia, sem ruídos. Colar indicado.</td>
+                        <td>Roncos (obstrução parcial).</td>
+                        <td><input type="checkbox" id="v1-a"> <label for="v1-a">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>B</b> - Respiração e Ventilação</td>
+                        <td><b>Freq:</b> 20 irpm. <b>Padrão:</b> Regular. <b>Ausculta:</b> MVPB.</td>
+                        <td><b>Freq:</b> 28 irpm. <b>Padrão:</b> Cheyne-Stokes. <b>Ausculta:</b> MVPB c/ roncos.</td>
+                        <td><input type="checkbox" id="v1-b"> <label for="v1-b">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>C</b> - Circulação e Hemorragias</td>
+                        <td><b>Pulso:</b> 110 bpm, fraco, filiforme. <b>Pele:</b> Pálida, fria, pegajosa. <b>Perfusão:</b> > 3 seg. <b>PA:</b> 110/70 mmHg.</td>
+                        <td><b>Pulso:</b> 130 bpm, muito fraco. <b>Pele:</b> Cianose leve. <b>Perfusão:</b> > 5 seg. <b>PA:</b> 90/60 mmHg.</td>
+                        <td><input type="checkbox" id="v1-c"> <label for="v1-c">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>D</b> - Neurológico (Disability)</td>
+                        <td><b>Glasgow:</b> 15 (O4V5M6). <b>Pupilas:</b> Anisocóricas.</td>
+                        <td><b>Glasgow:</b> 11 -> 8. <b>Pupilas:</b> Anisocoria pior.</td>
+                        <td><input type="checkbox" id="v1-d"> <label for="v1-d">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>E</b> - Exposição e Ambiente</td>
+                        <td>Expor tórax/abdômen. Prevenir hipotermia. <b>Temp:</b> 35.8°C.</td>
+                        <td><b>Temp:</b> 35.5°C.</td>
+                        <td><input type="checkbox" id="v1-e"> <label for="v1-e">Verificado</label></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-            <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial</th>
-                    <th>Avaliação Tardia</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>Estável (Alerta)</td>
-                    <td><input type="checkbox" id="v4-avdi"> <label for="v4-avdi">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>GCS 15</td>
-                    <td><input type="checkbox" id="v4-gcs"> <label for="v4-gcs">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia</td>
-                    <td>Pérvia</td>
-                    <td><input type="checkbox" id="v4-airway"> <label for="v4-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>22 irpm, regular</td>
-                    <td>18 irpm (mais calmo)</td>
-                    <td><input type="checkbox" id="v4-resp"> <label for="v4-resp">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>MVPB</td>
-                    <td>MVPB</td>
-                    <td><input type="checkbox" id="v4-ausculta"> <label for="v4-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>115 bpm, forte, regular, R=L</td>
-                    <td>100 bpm, forte, regular, R=L</td>
-                    <td><input type="checkbox" id="v4-pulso"> <label for="v4-pulso">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Sangramento ativo (couro cabeludo)</td>
-                    <td>Controlada com curativo</td>
-                    <td><input type="checkbox" id="v4-hemorragia"> <label for="v4-hemorragia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Corada, quente, seca</td>
-                    <td>Corada, quente, seca</td>
-                    <td><input type="checkbox" id="v4-pele"> <label for="v4-pele">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Perfusão Capilar</td>
-                    <td> < 2 seg</td>
-                    <td> < 2 seg</td>
-                    <td><input type="checkbox" id="v4-perfusao"> <label for="v4-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>130/80 mmHg</td>
-                    <td>125/80 mmHg (Estável)</td>
-                    <td><input type="checkbox" id="v4-pa"> <label for="v4-pa">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>98% em ar ambiente</td>
-                    <td>99%</td>
-                    <td><input type="checkbox" id="v4-spo2"> <label for="v4-spo2">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v4-pupilas"> <label for="v4-pupilas">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Laceração no couro cabeludo</td>
-                    <td>Sem outras alterações</td>
-                    <td><input type="checkbox" id="v4-face"> <label for="v4-face">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v4-traqueia"> <label for="v4-traqueia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>120 mg/dL</td>
-                    <td>115 mg/dL</td>
-                    <td><input type="checkbox" id="v4-glicemia"> <label for="v4-glicemia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor no antebraço D (6/10)</td>
-                    <td>Dor persiste (6/10)</td>
-                    <td><input type="checkbox" id="v4-dor"> <label for="v4-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div id="vitima5" class="conteudo-vitima">
-         <h3>Vítima 5 (Estável - Lesão Dolorosa em Membro Superior)</h3>
-        <p><strong>Descrição:</strong> Fratura fechada de clavícula...</p>
+        <div class="tab-content secondary-assessment">
+            <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                        <td>Cabeça/Crânio</td>
+                        <td>Hematoma retroauricular D (Battle).</td>
+                        <td><input type="checkbox" id="v1-sec-cabeca"> <label for="v1-sec-cabeca">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td>Face/Maxilar</td>
+                        <td>Estável.</td>
+                        <td><input type="checkbox" id="v1-sec-face"> <label for="v1-sec-face">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td>Pescoço (Reavaliação)</td>
+                        <td>Traqueia centrada. Jugulares planas.</td>
+                        <td><input type="checkbox" id="v1-sec-pescoco"> <label for="v1-sec-pescoco">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td>Tórax (Reavaliação)</td>
+                        <td>Estável, sem dor à palpação.</td>
+                        <td><input type="checkbox" id="v1-sec-torax"> <label for="v1-sec-torax">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td>Abdômen</td>
+                        <td>Distendido, rígido, doloroso à palpação profunda.</td>
+                        <td><input type="checkbox" id="v1-sec-abdomen"> <label for="v1-sec-abdomen">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td>Pelve</td>
+                        <td>Estável.</td>
+                        <td><input type="checkbox" id="v1-sec-pelve"> <label for="v1-sec-pelve">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td>Membros Superiores</td>
+                        <td>Pulsos radiais fracos, simétricos. PMS preservado.</td>
+                        <td><input type="checkbox" id="v1-sec-mmss"> <label for="v1-sec-mmss">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td>Membros Inferiores</td>
+                        <td>Pulsos pediosos fracos, simétricos. PMS preservado.</td>
+                        <td><input type="checkbox" id="v1-sec-mmii"> <label for="v1-sec-mmii">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td>Dorso</td>
+                        <td>Verificar coluna no rolamento. Sem deformidades.</td>
+                        <td><input type="checkbox" id="v1-sec-dorso"> <label for="v1-sec-dorso">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td>Sinais Vitais Detalhados</td>
+                        <td>SpO2: 96%->90%. Glicemia: 110mg/dL. Temp: 35.8°C->35.5°C.</td>
+                        <td><input type="checkbox" id="v1-sec-sv"> <label for="v1-sec-sv">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td>Histórico (SAMPLE)</td>
+                        <td>S: Cefaleia leve. A: Nega. M: Nega. P: Nega. L: Refeição 2h. E: Colisão frontal, bateu cabeça.</td>
+                        <td><input type="checkbox" id="v1-sec-sample"> <label for="v1-sec-sample">Verificado</label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima2" class="conteudo-vitima">
+        <h3>Vítima 2 (Estável - Fratura)</h3>
+        <p><strong>Descrição:</strong> Fratura fechada de tíbia/fíbula esquerda, dor intensa, ansiedade.</p>
         <div class="detalhe-ator">
-             <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada de clavícula direita.</p>
-            <p><strong>Aparência:</strong> Sentado, segurando o braço direito junto ao corpo (posição antálgica). Algumas escoriações no rosto e braços.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja com dor intensa (8/10) sempre que tentarem mover seu braço direito. Permaneça calmo se não for tocado, mas reclame da dor. Peça por algo para a dor.</p>
-       </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-             <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial</th>
-                    <th>Avaliação Tardia</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>Estável (Alerta)</td>
-                    <td><input type="checkbox" id="v5-avdi"> <label for="v5-avdi">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>GCS 15</td>
-                    <td><input type="checkbox" id="v5-gcs"> <label for="v5-gcs">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia</td>
-                    <td>Pérvia</td>
-                    <td><input type="checkbox" id="v5-airway"> <label for="v5-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>18 irpm, regular</td>
-                    <td>18 irpm</td>
-                    <td><input type="checkbox" id="v5-resp"> <label for="v5-resp">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>MVPB</td>
-                    <td>MVPB</td>
-                    <td><input type="checkbox" id="v5-ausculta"> <label for="v5-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>95 bpm, forte, regular, R=L</td>
-                    <td>90 bpm, forte, regular, R=L</td>
-                    <td><input type="checkbox" id="v5-pulso"> <label for="v5-pulso">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausentes</td>
-                    <td>Ausentes</td>
-                    <td><input type="checkbox" id="v5-hemorragia"> <label for="v5-hemorragia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Corada, quente, seca</td>
-                    <td>Corada, quente, seca</td>
-                    <td><input type="checkbox" id="v5-pele"> <label for="v5-pele">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Perfusão Capilar</td>
-                    <td> < 2 seg</td>
-                    <td> < 2 seg</td>
-                    <td><input type="checkbox" id="v5-perfusao"> <label for="v5-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>135/85 mmHg</td>
-                    <td>130/80 mmHg</td>
-                    <td><input type="checkbox" id="v5-pa"> <label for="v5-pa">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>99% em ar ambiente</td>
-                    <td>99%</td>
-                    <td><input type="checkbox" id="v5-spo2"> <label for="v5-spo2">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v5-pupilas"> <label for="v5-pupilas">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Escoriações leves</td>
-                    <td>Sem alterações</td>
-                    <td><input type="checkbox" id="v5-face"> <label for="v5-face">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v5-traqueia"> <label for="v5-traqueia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>115 mg/dL</td>
-                    <td>110 mg/dL</td>
-                    <td><input type="checkbox" id="v5-glicemia"> <label for="v5-glicemia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor intensa (8/10) clavícula D</td>
-                    <td>Dor persiste (8/10)</td>
-                    <td><input type="checkbox" id="v5-dor"> <label for="v5-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="vitima6" class="conteudo-vitima">
-        <h3>Vítima 6 (Estável - "Andante" com Suspeita de Lesão na Coluna)</h3>
-        <p><strong>Descrição:</strong> Contusão lombar e entorse cervical...</p>
+            <p><strong>Condição Clínica:</strong> Fratura fechada tíbia/fíbula E.</p>
+            <p><strong>Aparência:</strong> Deformidade perna E. Pálido (dor).</p>
+            <p><strong>Instruções Ator:</strong> Ansioso, barulhento, grita de dor (10/10), exige atendimento.</p>
+        </div>
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+             <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial</th>
+                        <th>Avaliação Tardia</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                        <td><b>X</b> - Hemorragia Exsanguinante</td>
+                        <td>Ausente</td>
+                        <td>Ausente</td>
+                        <td><input type="checkbox" id="v2-x"> <label for="v2-x">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td>
+                        <td>Pérvia, falando frases completas. Considerar colar.</td>
+                        <td>Pérvia.</td>
+                        <td><input type="checkbox" id="v2-a"> <label for="v2-a">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td><b>B</b> - Respiração e Ventilação</td>
+                        <td><b>Freq:</b> 24 irpm. <b>Padrão:</b> Regular (ansiedade). <b>Ausculta:</b> MVPB.</td>
+                        <td><b>Freq:</b> 20 irpm.</td>
+                        <td><input type="checkbox" id="v2-b"> <label for="v2-b">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>C</b> - Circulação e Hemorragias</td>
+                        <td><b>Pulso:</b> 120 bpm, forte, regular. <b>Pele:</b> Pálida (dor), quente, seca. <b>Perfusão:</b> < 2 seg. <b>PA:</b> 145/85 mmHg.</td>
+                        <td><b>Pulso:</b> 110 bpm. <b>Pele:</b> Corada. <b>PA:</b> 140/80 mmHg.</td>
+                        <td><input type="checkbox" id="v2-c"> <label for="v2-c">Verificado</label></td>
+                    </tr>
+                    <tr>
+                        <td><b>D</b> - Neurológico (Disability)</td>
+                        <td><b>Glasgow:</b> 15. <b>Pupilas:</b> Isocóricas, fotorreagentes.</td>
+                        <td>Estável.</td>
+                        <td><input type="checkbox" id="v2-d"> <label for="v2-d">Verificado</label></td>
+                    </tr>
+                     <tr>
+                        <td><b>E</b> - Exposição e Ambiente</td>
+                        <td>Expor membro afetado. Manter aquecido.</td>
+                        <td>Estável.</td>
+                        <td><input type="checkbox" id="v2-e"> <label for="v2-e">Verificado</label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+            <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Sem lesões.</td><td><input type="checkbox" id="v2-sec-cabeca"> <label for="v2-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v2-sec-face"> <label for="v2-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Sem dor ou deformidade. Traqueia centrada. Jugulares planas.</td><td><input type="checkbox" id="v2-sec-pescoco"> <label for="v2-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Estável.</td><td><input type="checkbox" id="v2-sec-torax"> <label for="v2-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v2-sec-abdomen"> <label for="v2-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v2-sec-pelve"> <label for="v2-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v2-sec-mmss"> <label for="v2-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Deformidade, edema, dor intensa na perna E. Pulso pedioso presente. PMS distal ok (difícil avaliar M pela dor).</td><td><input type="checkbox" id="v2-sec-mmii"> <label for="v2-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Sem dor ou deformidade.</td><td><input type="checkbox" id="v2-sec-dorso"> <label for="v2-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 99%. Glicemia: 130mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v2-sec-sv"> <label for="v2-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor 10/10 perna E. A: Dipirona. M: Nenhum. P: Nega. L: Café 1h. E: Colisão, perna prendeu.</td><td><input type="checkbox" id="v2-sec-sample"> <label for="v2-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima3" class="conteudo-vitima">
+         <h3>Vítima 3 (Grave - Tórax)</h3>
+        <p><strong>Descrição:</strong> Pneumotórax Hipertensivo em desenvolvimento.</p>
         <div class="detalhe-ator">
-            <p><strong>Condição Clínica Subjacente:</strong> Lesão muscular/ligamentar na coluna cervical e lombar (sem fratura).</p>
-            <p><strong>Aparência:</strong> Andando pela cena, parecendo um pouco "atordoado" ou perdido. Sem ferimentos visíveis.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja confuso sobre o que aconteceu. Reclame de dor no pescoço e nas costas (dor "chata", 4/10). Se perguntarem, diga que bateu as costas mas conseguiu sair sozinho. Obedeça às ordens de sentar e esperar, mas pareça ansioso.</p>
+             <p><strong>Condição Clínica:</strong> Fratura costela D -> Pneumotórax -> PHT.</p>
+            <p><strong>Aparência:</strong> Sentado, pânico, dispneico.</p>
+            <p><strong>Instruções Ator:</strong> Ansiedade extrema, "Não consigo respirar", dor peito D. Confuso->sonolento.</p>
        </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-            <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial</th>
-                    <th>Avaliação Tardia</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>Estável (Alerta)</td>
-                    <td><input type="checkbox" id="v6-avdi"> <label for="v6-avdi">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>GCS 15</td>
-                    <td><input type="checkbox" id="v6-gcs"> <label for="v6-gcs">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia</td>
-                    <td>Pérvia</td>
-                    <td><input type="checkbox" id="v6-airway"> <label for="v6-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>16 irpm, regular</td>
-                    <td>16 irpm</td>
-                    <td><input type="checkbox" id="v6-resp"> <label for="v6-resp">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>MVPB</td>
-                    <td>MVPB</td>
-                    <td><input type="checkbox" id="v6-ausculta"> <label for="v6-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>90 bpm, forte, regular, R=L</td>
-                    <td>85 bpm, forte, regular, R=L</td>
-                    <td><input type="checkbox" id="v6-pulso"> <label for="v6-pulso">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausentes</td>
-                    <td>Ausentes</td>
-                    <td><input type="checkbox" id="v6-hemorragia"> <label for="v6-hemorragia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Corada, quente, seca</td>
-                    <td>Corada, quente, seca</td>
-                    <td><input type="checkbox" id="v6-pele"> <label for="v6-pele">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Perfusão Capilar</td>
-                    <td> < 2 seg</td>
-                    <td> < 2 seg</td>
-                    <td><input type="checkbox" id="v6-perfusao"> <label for="v6-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>130/80 mmHg</td>
-                    <td>130/80 mmHg</td>
-                    <td><input type="checkbox" id="v6-pa"> <label for="v6-pa">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>100% em ar ambiente</td>
-                    <td>100%</td>
-                    <td><input type="checkbox" id="v6-spo2"> <label for="v6-spo2">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v6-pupilas"> <label for="v6-pupilas">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Sem deformidades</td>
-                    <td>Sem deformidades</td>
-                    <td><input type="checkbox" id="v6-face"> <label for="v6-face">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v6-traqueia"> <label for="v6-traqueia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>100 mg/dL</td>
-                    <td>100 mg/dL</td>
-                    <td><input type="checkbox" id="v6-glicemia"> <label for="v6-glicemia">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor cervical e lombar (4/10)</td>
-                    <td>Dor persiste (4/10)</td>
-                    <td><input type="checkbox" id="v6-dor"> <label for="v6-dor">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Avaliação Neurológica (Membros)</td>
-                    <td>Força e sensibilidade preservadas</td>
-                    <td>Sem alterações</td>
-                    <td><input type="checkbox" id="v6-neuro"> <label for="v6-neuro">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div id="vitima7" class="conteudo-vitima">
-        <h3>Vítima 7 (Estável - Auto Extração Assistida)</h3>
-        <p><strong>Descrição:</strong> Dor no braço direito...</p>
+         <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+             <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial (0-5 min)</th>
+                        <th>Avaliação Tardia (Após 10 min)</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Ausente</td><td>Ausente</td><td><input type="checkbox" id="v3-x"> <label for="v3-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia, falando frases curtas. Considerar colar.</td><td>Pérvia.</td><td><input type="checkbox" id="v3-a"> <label for="v3-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 30 irpm. <b>Padrão:</b> Superficial. <b>Ausculta:</b> Sons diminuídos à D. <b>Tórax:</b> Assimétrico (D expande menos).</td><td><b>Freq:</b> 38 irpm. <b>Padrão:</b> Muito superficial. <b>Ausculta:</b> Sons ABOLIDOS à D. <b>Tórax:</b> Assimetria evidente.</td><td><input type="checkbox" id="v3-b"> <label for="v3-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 125 bpm, fraco. <b>Pele:</b> Pálida, fria. <b>Perfusão:</b> > 3 seg. <b>PA:</b> 100/60 mmHg. <b>Jugulares:</b> Planas.</td><td><b>Pulso:</b> 140 bpm, filiforme. <b>Pele:</b> Cianose central. <b>Perfusão:</b> > 5 seg. <b>PA:</b> 85/50 mmHg. <b>Jugulares:</b> TURGIDAS.</td><td><input type="checkbox" id="v3-c"> <label for="v3-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 15 (ansioso). <b>Pupilas:</b> Isocóricas.</td><td><b>Glasgow:</b> 13 (confuso).</td><td><input type="checkbox" id="v3-d"> <label for="v3-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Expor tórax. Manter aquecido. <b>Temp:</b> Normal.</td><td>Estável.</td><td><input type="checkbox" id="v3-e"> <label for="v3-e">Verificado</label></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Sem lesões.</td><td><input type="checkbox" id="v3-sec-cabeca"> <label for="v3-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v3-sec-face"> <label for="v3-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço (Reavaliação)</td><td>Traqueia centrada -> DESVIADA E. Jugulares planas -> TURGIDAS.</td><td><input type="checkbox" id="v3-sec-pescoco"> <label for="v3-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax (Reavaliação)</td><td>Dor à palpação costelas D. Crepitação? Enfisema subcutâneo?</td><td><input type="checkbox" id="v3-sec-torax"> <label for="v3-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v3-sec-abdomen"> <label for="v3-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v3-sec-pelve"> <label for="v3-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v3-sec-mmss"> <label for="v3-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v3-sec-mmii"> <label for="v3-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Sem lesões.</td><td><input type="checkbox" id="v3-sec-dorso"> <label for="v3-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 91%->86%. Glicemia: 120mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v3-sec-sv"> <label for="v3-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor torácica D (9/10), dispneia. A: Nega. M: Nega. P: Nega. L: Jantar 3h. E: Colisão lateral, bateu tórax D.</td><td><input type="checkbox" id="v3-sec-sample"> <label for="v3-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima4" class="conteudo-vitima">
+        <h3>Vítima 4 (Estável - Hemorragia Externa)</h3>
+        <p><strong>Descrição:</strong> Laceração couro cabeludo, fratura antebraço D. Impacto visual pelo sangue.</p>
         <div class="detalhe-ator">
-             <p><strong>Condição Clínica Subjacente:</strong> Fratura fechada do antebraço direito (rádio/ulna).</p>
-            <p><strong>Aparência:</strong> Calmo, mas com dor. Segurando o antebraço direito. Saiu do carro com ajuda ou sozinho.</p>
-            <p><strong>Instruções para o Ator:</strong> Aja calmamente, mas deixe claro que seu braço dói (7/10). Siga as instruções da equipe de resgate. Pergunte sobre as outras vítimas. Cumpra o papel de "vítima verde" (estável).</p>
+            <p><strong>Condição Clínica:</strong> Laceração couro cabeludo. Fratura rádio/ulna D.</p>
+            <p><strong>Aparência:</strong> Sangue rosto/cabelo. Deformidade antebraço D.</p>
+            <p><strong>Instruções Ator:</strong> Ansioso, assustado ("Vou morrer?"). Dor braço (6/10).</p>
+        </div>
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+             <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial</th>
+                        <th>Avaliação Tardia</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Sangramento ativo (venoso) couro cabeludo.</td><td>Controlada c/ curativo.</td><td><input type="checkbox" id="v4-x"> <label for="v4-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia. Considerar colar.</td><td>Pérvia.</td><td><input type="checkbox" id="v4-a"> <label for="v4-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 22 irpm. <b>Padrão:</b> Regular. <b>Ausculta:</b> MVPB.</td><td><b>Freq:</b> 18 irpm.</td><td><input type="checkbox" id="v4-b"> <label for="v4-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 115 bpm, forte, regular. <b>Pele:</b> Corada, quente, seca. <b>Perfusão:</b> < 2 seg. <b>PA:</b> 130/80 mmHg.</td><td><b>Pulso:</b> 100 bpm. <b>PA:</b> 125/80 mmHg.</td><td><input type="checkbox" id="v4-c"> <label for="v4-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 15. <b>Pupilas:</b> Isocóricas.</td><td>Estável.</td><td><input type="checkbox" id="v4-d"> <label for="v4-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Expor membro afetado. Manter aquecido.</td><td>Estável.</td><td><input type="checkbox" id="v4-e"> <label for="v4-e">Verificado</label></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Laceração couro cabeludo (temporal E).</td><td><input type="checkbox" id="v4-sec-cabeca"> <label for="v4-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v4-sec-face"> <label for="v4-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Sem dor ou deformidade. Traqueia centrada. Jugulares planas.</td><td><input type="checkbox" id="v4-sec-pescoco"> <label for="v4-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Estável.</td><td><input type="checkbox" id="v4-sec-torax"> <label for="v4-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v4-sec-abdomen"> <label for="v4-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v4-sec-pelve"> <label for="v4-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Deformidade, edema, dor antebraço D. Pulso radial D presente. PMS ok. MS E sem lesões.</td><td><input type="checkbox" id="v4-sec-mmss"> <label for="v4-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v4-sec-mmii"> <label for="v4-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Sem lesões.</td><td><input type="checkbox" id="v4-sec-dorso"> <label for="v4-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 98%->99%. Glicemia: 120mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v4-sec-sv"> <label for="v4-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor braço D (6/10). A: Nega. M: Nega. P: Nega. L: Almoço 1h. E: Colisão, braço bateu.</td><td><input type="checkbox" id="v4-sec-sample"> <label for="v4-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima5" class="conteudo-vitima">
+        <h3>Vítima 5 (Estável - Clavícula)</h3>
+        <p><strong>Descrição:</strong> Fratura fechada de clavícula D. Escoriações leves.</p>
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica:</strong> Fratura clavícula D.</p>
+            <p><strong>Aparência:</strong> Sentado, segurando braço D. Escoriações.</p>
+            <p><strong>Instruções Ator:</strong> Dor intensa (8/10) ao mover braço D. Calmo se não tocado.</p>
+        </div>
+         <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+            <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial</th>
+                        <th>Avaliação Tardia</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Ausente</td><td>Ausente</td><td><input type="checkbox" id="v5-x"> <label for="v5-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia. Considerar colar.</td><td>Pérvia.</td><td><input type="checkbox" id="v5-a"> <label for="v5-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 18 irpm. <b>Padrão:</b> Regular (superficial pela dor). <b>Ausculta:</b> MVPB.</td><td>Estável.</td><td><input type="checkbox" id="v5-b"> <label for="v5-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 95 bpm, forte, regular. <b>Pele:</b> Corada, quente, seca. <b>Perfusão:</b> < 2 seg. <b>PA:</b> 135/85 mmHg.</td><td><b>Pulso:</b> 90 bpm. <b>PA:</b> 130/80 mmHg.</td><td><input type="checkbox" id="v5-c"> <label for="v5-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 15. <b>Pupilas:</b> Isocóricas.</td><td>Estável.</td><td><input type="checkbox" id="v5-d"> <label for="v5-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Expor ombro/clavícula D. Manter aquecido.</td><td>Estável.</td><td><input type="checkbox" id="v5-e"> <label for="v5-e">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Escoriações leves face.</td><td><input type="checkbox" id="v5-sec-cabeca"> <label for="v5-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Estável.</td><td><input type="checkbox" id="v5-sec-face"> <label for="v5-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Sem dor ou deformidade. Traqueia centrada. Jugulares planas.</td><td><input type="checkbox" id="v5-sec-pescoco"> <label for="v5-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Dor intensa à palpação clavícula D. Crepitação? Deformidade?</td><td><input type="checkbox" id="v5-sec-torax"> <label for="v5-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v5-sec-abdomen"> <label for="v5-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v5-sec-pelve"> <label for="v5-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Braço D em posição antálgica. Dor intensa à movimentação. Pulso radial D presente. PMS ok. MS E sem lesões.</td><td><input type="checkbox" id="v5-sec-mmss"> <label for="v5-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v5-sec-mmii"> <label for="v5-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Sem lesões.</td><td><input type="checkbox" id="v5-sec-dorso"> <label for="v5-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 99%. Glicemia: 115mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v5-sec-sv"> <label for="v5-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor 8/10 ombro D. A: Nega. M: Nega. P: Nega. L: Café 2h. E: Colisão, caiu sobre ombro.</td><td><input type="checkbox" id="v5-sec-sample"> <label for="v5-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima6" class="conteudo-vitima">
+        <h3>Vítima 6 (Estável - Coluna)</h3>
+        <p><strong>Descrição:</strong> Contusão lombar e entorse cervical. Sem déficit neurológico.</p>
+        <div class="detalhe-ator">
+             <p><strong>Condição Clínica:</strong> Lesão muscular/ligamentar cervical/lombar.</p>
+            <p><strong>Aparência:</strong> Andando, atordoado.</p>
+            <p><strong>Instruções Ator:</strong> Confuso, dor pescoço/costas (4/10). Saiu sozinho. Obedece ordens.</p>
        </div>
-        <h4>Evolução dos Parâmetros</h4>
-        <table>
-             <thead>
-                 <tr>
-                    <th>Parâmetro</th>
-                    <th>Avaliação Inicial</th>
-                    <th>Avaliação Tardia</th>
-                    <th>Procedimento Feito?</th>
-                </tr>
-           </thead>
-            <tbody>
-                <tr>
-                    <td>Nível de Consciência (AVDI)</td>
-                    <td>A (Alerta)</td>
-                    <td>Estável (Alerta)</td>
-                    <td><input type="checkbox" id="v7-avdi"> <label for="v7-avdi">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Escala de Coma de Glasgow</td>
-                    <td>GCS 15</td>
-                    <td>GCS 15</td>
-                    <td><input type="checkbox" id="v7-gcs"> <label for="v7-gcs">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Via Aérea</td>
-                    <td>Pérvia</td>
-                    <td>Pérvia</td>
-                    <td><input type="checkbox" id="v7-airway"> <label for="v7-airway">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Respiração (Freq/Padrão)</td>
-                    <td>20 irpm, regular</td>
-                    <td>18 irpm</td>
-                    <td><input type="checkbox" id="v7-resp"> <label for="v7-resp">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Ausculta Pulmonar</td>
-                    <td>MVPB</td>
-                    <td>MVPB</td>
-                    <td><input type="checkbox" id="v7-ausculta"> <label for="v7-ausculta">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pulso (Freq/Qualidade/Compar.)</td>
-                    <td>100 bpm, forte, regular, R=L</td>
-                    <td>95 bpm, forte, regular, R=L</td>
-                    <td><input type="checkbox" id="v7-pulso"> <label for="v7-pulso">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Controle de Hemorragias</td>
-                    <td>Ausentes</td>
-                    <td>Ausentes</td>
-                    <td><input type="checkbox" id="v7-hemorragia"> <label for="v7-hemorragia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Pele (Cor/Temp/Umidade)</td>
-                    <td>Corada, quente, seca</td>
-                    <td>Corada, quente, seca</td>
-                    <td><input type="checkbox" id="v7-pele"> <label for="v7-pele">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Perfusão Capilar</td>
-                    <td> < 2 seg</td>
-                    <td> < 2 seg</td>
-                    <td><input type="checkbox" id="v7-perfusao"> <label for="v7-perfusao">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial (PA)</td>
-                    <td>140/90 mmHg</td>
-                    <td>135/85 mmHg</td>
-                    <td><input type="checkbox" id="v7-pa"> <label for="v7-pa">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Oximetria (SpO2)</td>
-                    <td>98% em ar ambiente</td>
-                    <td>98%</td>
-                    <td><input type="checkbox" id="v7-spo2"> <label for="v7-spo2">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Pupilas</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td>Isocóricas, fotorreagentes</td>
-                    <td><input type="checkbox" id="v7-pupilas"> <label for="v7-pupilas">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Avaliação Facial</td>
-                    <td>Sem deformidades</td>
-                    <td>Sem deformidades</td>
-                    <td><input type="checkbox" id="v7-face"> <label for="v7-face">Verificado</label></td>
-                </tr>
-                <tr>
-                    <td>Traqueia</td>
-                    <td>Centrada</td>
-                    <td>Centrada</td>
-                    <td><input type="checkbox" id="v7-traqueia"> <label for="v7-traqueia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Glicemia Capilar</td>
-                    <td>110 mg/dL</td>
-                    <td>105 mg/dL</td>
-                    <td><input type="checkbox" id="v7-glicemia"> <label for="v7-glicemia">Verificado</label></td>
-                </tr>
-                 <tr>
-                    <td>Dor (Escala 0-10)</td>
-                    <td>Dor antebraço D (7/10)</td>
-                    <td>Dor persiste (7/10)</td>
-                    <td><input type="checkbox" id="v7-dor"> <label for="v7-dor">Verificado</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+            <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial</th>
+                        <th>Avaliação Tardia</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Ausente</td><td>Ausente</td><td><input type="checkbox" id="v6-x"> <label for="v6-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia. Colar cervical OBRIGATÓRIO pelo mecanismo.</td><td>Pérvia.</td><td><input type="checkbox" id="v6-a"> <label for="v6-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 16 irpm. <b>Padrão:</b> Regular. <b>Ausculta:</b> MVPB.</td><td>Estável.</td><td><input type="checkbox" id="v6-b"> <label for="v6-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 90 bpm, forte, regular. <b>Pele:</b> Corada, quente, seca. <b>Perfusão:</b> < 2 seg. <b>PA:</b> 130/80 mmHg.</td><td><b>Pulso:</b> 85 bpm.</td><td><input type="checkbox" id="v6-c"> <label for="v6-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 15. <b>Pupilas:</b> Isocóricas.</td><td>Estável.</td><td><input type="checkbox" id="v6-d"> <label for="v6-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Manter aquecido.</td><td>Estável.</td><td><input type="checkbox" id="v6-e"> <label for="v6-e">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Sem lesões.</td><td><input type="checkbox" id="v6-sec-cabeca"> <label for="v6-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v6-sec-face"> <label for="v6-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Dor à palpação da musculatura paravertebral cervical.</td><td><input type="checkbox" id="v6-sec-pescoco"> <label for="v6-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Estável.</td><td><input type="checkbox" id="v6-sec-torax"> <label for="v6-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v6-sec-abdomen"> <label for="v6-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v6-sec-pelve"> <label for="v6-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v6-sec-mmss"> <label for="v6-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v6-sec-mmii"> <label for="v6-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Dor à palpação da musculatura lombar. Sem deformidades.</td><td><input type="checkbox" id="v6-sec-dorso"> <label for="v6-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 100%. Glicemia: 100mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v6-sec-sv"> <label for="v6-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor pescoço/costas (4/10). A: Nega. M: Nega. P: Nega. L: Café 2h. E: Colisão traseira (efeito chicote).</td><td><input type="checkbox" id="v6-sec-sample"> <label for="v6-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima7" class="conteudo-vitima">
+        <h3>Vítima 7 (Estável - Auto Extração)</h3>
+        <p><strong>Descrição:</strong> Dor antebraço D, suspeita fratura rádio/ulna.</p>
+        <div class="detalhe-ator">
+            <p><strong>Condição Clínica:</strong> Fratura fechada antebraço D.</p>
+            <p><strong>Aparência:</strong> Calmo, segurando braço D.</p>
+            <p><strong>Instruções Ator:</strong> Calmo, dor braço (7/10). Segue instruções. Pergunta outros.</p>
+        </div>
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+            <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial</th>
+                        <th>Avaliação Tardia</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Ausente</td><td>Ausente</td><td><input type="checkbox" id="v7-x"> <label for="v7-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia. Considerar colar pelo mecanismo.</td><td>Pérvia.</td><td><input type="checkbox" id="v7-a"> <label for="v7-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 20 irpm. <b>Padrão:</b> Regular. <b>Ausculta:</b> MVPB.</td><td><b>Freq:</b> 18 irpm.</td><td><input type="checkbox" id="v7-b"> <label for="v7-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 100 bpm, forte, regular. <b>Pele:</b> Corada, quente, seca. <b>Perfusão:</b> < 2 seg. <b>PA:</b> 140/90 mmHg.</td><td><b>Pulso:</b> 95 bpm. <b>PA:</b> 135/85 mmHg.</td><td><input type="checkbox" id="v7-c"> <label for="v7-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 15. <b>Pupilas:</b> Isocóricas.</td><td>Estável.</td><td><input type="checkbox" id="v7-d"> <label for="v7-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Expor membro afetado. Manter aquecido.</td><td>Estável.</td><td><input type="checkbox" id="v7-e"> <label for="v7-e">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Sem lesões.</td><td><input type="checkbox" id="v7-sec-cabeca"> <label for="v7-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v7-sec-face"> <label for="v7-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Sem dor ou deformidade.</td><td><input type="checkbox" id="v7-sec-pescoco"> <label for="v7-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Estável.</td><td><input type="checkbox" id="v7-sec-torax"> <label for="v7-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Flácido, indolor.</td><td><input type="checkbox" id="v7-sec-abdomen"> <label for="v7-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v7-sec-pelve"> <label for="v7-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Dor, edema, possível deformidade antebraço D. Pulso radial D presente. PMS ok. MS E sem lesões.</td><td><input type="checkbox" id="v7-sec-mmss"> <label for="v7-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Sem lesões. PMS ok.</td><td><input type="checkbox" id="v7-sec-mmii"> <label for="v7-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Sem lesões.</td><td><input type="checkbox" id="v7-sec-dorso"> <label for="v7-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 98%. Glicemia: 110mg/dL. Temp: Normal.</td><td><input type="checkbox" id="v7-sec-sv"> <label for="v7-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>S: Dor braço D (7/10). A: Nega. M: Nega. P: Nega. L: Café 3h. E: Colisão, braço bateu no painel.</td><td><input type="checkbox" id="v7-sec-sample"> <label for="v7-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> <div id="vitima8" class="conteudo-vitima">
+        <h3>Vítima 8 (Grave - Abdômen)</h3>
+        <p><strong>Descrição:</strong> Motorista preso às ferragens, dor abdominal intensa após colisão frontal. Deterioração rápida.</p>
+        <div class="detalhe-ator">
+             <p><strong>Condição Clínica:</strong> Trauma Abdominal Fechado (TAF) com lesão de órgão sólido (ex: baço). Choque Hipovolêmico.</p>
+            <p><strong>Aparência:</strong> Pálido, sudoreico, taquipneico. Abdômen distendido/rígido.</p>
+            <p><strong>Instruções Ator:</strong> Geme de dor abd (10/10). Consciente -> Confuso -> Responde dor -> Inconsciente.</p>
+       </div>
+        <div class="assessment-tabs">
+            <button class="tab-button active" data-target="primary-assessment">Avaliação Primária (XABCDE)</button>
+            <button class="tab-button" data-target="secondary-assessment">Avaliação Secundária</button>
+        </div>
+        <div class="tab-content primary-assessment active">
+            <h4>Avaliação Primária (XABCDE)</h4>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Parâmetro (XABCDE)</th>
+                        <th>Avaliação Inicial (0-5 min)</th>
+                        <th>Avaliação Tardia (Após 10 min)</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>X</b> - Hemorragia Exsanguinante</td><td>Ausente externamente.</td><td>(N/A Externamente)</td><td><input type="checkbox" id="v8-x"> <label for="v8-x">Verificado</label></td></tr>
+                    <tr><td><b>A</b> - Vias Aéreas (+ Coluna Cervical)</td><td>Pérvia, gemendo. Colar OBRIGATÓRIO.</td><td>Pérvia, mas ruidosa (gemidos).</td><td><input type="checkbox" id="v8-a"> <label for="v8-a">Verificado</label></td></tr>
+                    <tr><td><b>B</b> - Respiração e Ventilação</td><td><b>Freq:</b> 30 irpm. <b>Padrão:</b> Superficial. <b>Ausculta:</b> MVPB.</td><td><b>Freq:</b> 35 irpm. <b>Padrão:</b> Muito superficial. <b>Ausculta:</b> MVPB.</td><td><input type="checkbox" id="v8-b"> <label for="v8-b">Verificado</label></td></tr>
+                    <tr><td><b>C</b> - Circulação e Hemorragias</td><td><b>Pulso:</b> 120 bpm, fino, rápido. <b>Pele:</b> Fria, pegajosa. <b>Perfusão:</b> > 4 seg. <b>PA:</b> 90/60 mmHg.</td><td><b>Pulso:</b> 140 bpm, filiforme. <b>Pele:</b> Fria, pegajosa, cianose extremidades. <b>Perfusão:</b> > 5 seg. <b>PA:</b> 70/palpável.</td><td><input type="checkbox" id="v8-c"> <label for="v8-c">Verificado</label></td></tr>
+                    <tr><td><b>D</b> - Neurológico (Disability)</td><td><b>Glasgow:</b> 14 (O4V4M6 - confuso pela dor). <b>Pupilas:</b> Isocóricas.</td><td><b>Glasgow:</b> 8 (O2V2M4 - resposta à dor). <b>Pupilas:</b> Midriáticas, lentas.</td><td><input type="checkbox" id="v8-d"> <label for="v8-d">Verificado</label></td></tr>
+                    <tr><td><b>E</b> - Exposição e Ambiente</td><td>Expor tórax/abdômen (muito doloroso). Prevenir hipotermia. <b>Temp:</b> 36.0°C.</td><td>Abdômen muito distendido. <b>Temp:</b> 35.5°C.</td><td><input type="checkbox" id="v8-e"> <label for="v8-e">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="tab-content secondary-assessment">
+             <h4>Avaliação Secundária (Céfalo-Caudal, SAMPLE)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Segmento / Parâmetro</th>
+                        <th>Achados do Exame</th>
+                        <th>Procedimento Feito?</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Cabeça/Crânio</td><td>Sem lesões.</td><td><input type="checkbox" id="v8-sec-cabeca"> <label for="v8-sec-cabeca">Verificado</label></td></tr>
+                    <tr><td>Face/Maxilar</td><td>Sem lesões.</td><td><input type="checkbox" id="v8-sec-face"> <label for="v8-sec-face">Verificado</label></td></tr>
+                    <tr><td>Pescoço</td><td>Sem dor. Traqueia centrada. Jugulares planas.</td><td><input type="checkbox" id="v8-sec-pescoco"> <label for="v8-sec-pescoco">Verificado</label></td></tr>
+                    <tr><td>Tórax</td><td>Marca do cinto de segurança. Sem dor à palpação/instabilidade.</td><td><input type="checkbox" id="v8-sec-torax"> <label for="v8-sec-torax">Verificado</label></td></tr>
+                    <tr><td>Abdômen</td><td>Distendido, Rígido ("abdômen em tábua"), MUITO doloroso à palpação difusa.</td><td><input type="checkbox" id="v8-sec-abdomen"> <label for="v8-sec-abdomen">Verificado</label></td></tr>
+                    <tr><td>Pelve</td><td>Estável.</td><td><input type="checkbox" id="v8-sec-pelve"> <label for="v8-sec-pelve">Verificado</label></td></tr>
+                    <tr><td>Membros Superiores</td><td>Sem lesões. Pulsos radiais finos/rápidos. PMS ok (inicialmente).</td><td><input type="checkbox" id="v8-sec-mmss"> <label for="v8-sec-mmss">Verificado</label></td></tr>
+                    <tr><td>Membros Inferiores</td><td>Preso às ferragens (?). Pulsos pediosos finos/rápidos. PMS ok (inicialmente).</td><td><input type="checkbox" id="v8-sec-mmii"> <label for="v8-sec-mmii">Verificado</label></td></tr>
+                    <tr><td>Dorso</td><td>Verificar no rolamento (se possível/indicado).</td><td><input type="checkbox" id="v8-sec-dorso"> <label for="v8-sec-dorso">Verificado</label></td></tr>
+                    <tr><td>Sinais Vitais Detalhados</td><td>SpO2: 95%->88%. Glicemia: 100mg/dL. Temp: 36.0°C->35.5°C.</td><td><input type="checkbox" id="v8-sec-sv"> <label for="v8-sec-sv">Verificado</label></td></tr>
+                    <tr><td>Histórico (SAMPLE)</td><td>Difícil obter devido à dor/confusão. S: Dor abdominal 10/10. E: Colisão frontal, motorista.</td><td><input type="checkbox" id="v8-sec-sample"> <label for="v8-sec-sample">Verificado</label></td></tr>
+               </tbody>
+            </table>
+        </div>
+    </div> 
     <section class="pdf-links">
         <h2>Documentos de Apoio</h2>
         <ul>
@@ -939,10 +650,6 @@
             </ul>
         
     </section>
-
     <script src="script.js"></script>
 </body>
-
-
 </html>
-
