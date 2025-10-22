@@ -1,10 +1,17 @@
 // Espera o documento HTML carregar completamente antes de rodar o script
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM Carregado. Iniciando script..."); // Debug: Confirma que o script começa
 
     // --- Seletores de Elementos ---
     const seletor = document.getElementById('seletorVitima');
+    console.log("Seletor de Vítima:", seletor ? "Encontrado" : "NÃO ENCONTRADO"); // Debug
+
     const btnStartTimer = document.getElementById('btnStartTimer');
+    console.log("Botão Start Timer:", btnStartTimer ? "Encontrado" : "NÃO ENCONTRADO"); // Debug
+
     const btnReset = document.getElementById('btnReset');
+    console.log("Botão Reset:", btnReset ? "Encontrado" : "NÃO ENCONTRADO"); // Debug
+
     const timerDisplay = document.getElementById('timerDisplay');
     const inputTotalTime = document.getElementById('inputTotalTime');
     const inputDegradeTime = document.getElementById('inputDegradeTime');
@@ -25,73 +32,131 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- LÓGICA DE MOSTRAR/ESCONDER VÍTIMA ---
     if (seletor) {
         seletor.addEventListener('change', function() {
-            const idVitimaSelecionada = seletor.value;
+            console.log("Seleção de vítima mudou para:", this.value); // Debug
+            const idVitimaSelecionada = this.value; 
             const todosConteudos = document.querySelectorAll('.conteudo-vitima');
-            todosConteudos.forEach(conteudo => conteudo.classList.remove('active'));
+            
+            todosConteudos.forEach(conteudo => {
+                conteudo.classList.remove('active');
+            });
+
             if (idVitimaSelecionada) {
                 const vitimaParaMostrar = document.getElementById(idVitimaSelecionada);
                 if (vitimaParaMostrar) {
+                    console.log("Mostrando vítima:", idVitimaSelecionada); // Debug
                     vitimaParaMostrar.classList.add('active');
-                    // Ao selecionar nova vítima, reseta para a aba primária
                     resetToPrimaryTab(vitimaParaMostrar); 
+                    closeAllDetails(vitimaParaMostrar); 
+                } else {
+                    console.error("Erro: Elemento da vítima não encontrado para ID:", idVitimaSelecionada); // Debug Error
                 }
             }
         });
+        console.log("Listener do seletor de vítima ADICIONADO."); // Debug
+    } else {
+         console.log("Seletor de vítima NÃO encontrado nesta página."); // Debug Info
     }
 
-    // --- NOVA LÓGICA DAS ABAS DE AVALIAÇÃO ---
+    // --- LÓGICA DAS ABAS DE AVALIAÇÃO ---
     const allTabButtons = document.querySelectorAll('.tab-button');
+    console.log(`Encontrados ${allTabButtons.length} botões de aba.`); // Debug
 
     allTabButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Encontra o container pai da vítima atual
+            console.log("Botão de aba clicado:", this.textContent); // Debug
             const currentVictimContainer = this.closest('.conteudo-vitima');
-            if (!currentVictimContainer) return;
+            if (!currentVictimContainer) {
+                console.error("Erro: Container da vítima não encontrado para a aba."); // Debug Error
+                return;
+            }
 
-            // Encontra os botões e conteúdos DENTRO do container da vítima atual
             const currentTabs = currentVictimContainer.querySelectorAll('.tab-button');
             const currentContents = currentVictimContainer.querySelectorAll('.tab-content');
-            
-            // Pega o alvo (ex: 'primary-assessment' ou 'secondary-assessment') do botão clicado
             const targetContentClass = this.getAttribute('data-target');
+            console.log("Alvo da aba:", targetContentClass); // Debug
 
-            // Remove 'active' de todos os botões e conteúdos desta vítima
             currentTabs.forEach(tab => tab.classList.remove('active'));
             currentContents.forEach(content => content.classList.remove('active'));
 
-            // Adiciona 'active' ao botão clicado
             this.classList.add('active');
-
-            // Adiciona 'active' ao conteúdo correspondente
             const targetContent = currentVictimContainer.querySelector(`.tab-content.${targetContentClass}`);
             if (targetContent) {
+                console.log("Mostrando conteúdo da aba:", targetContentClass); // Debug
                 targetContent.classList.add('active');
+            } else {
+                 console.error("Erro: Conteúdo da aba não encontrado para:", targetContentClass); // Debug Error
             }
+            closeAllDetails(currentVictimContainer); 
         });
     });
+     console.log("Listeners dos botões de aba ADICIONADOS."); // Debug
 
-    // Função auxiliar para resetar para a aba primária ao mudar de vítima
+    // Função auxiliar para resetar para a aba primária
     function resetToPrimaryTab(victimContainer) {
+         if (!victimContainer) return;
+         console.log("Resetando para aba primária em:", victimContainer.id); // Debug
          const tabs = victimContainer.querySelectorAll('.tab-button');
          const contents = victimContainer.querySelectorAll('.tab-content');
          
          tabs.forEach(tab => tab.classList.remove('active'));
          contents.forEach(content => content.classList.remove('active'));
 
-         // Ativa o primeiro botão (Primária) e seu conteúdo
          const primaryTabButton = victimContainer.querySelector('.tab-button[data-target="primary-assessment"]');
          const primaryTabContent = victimContainer.querySelector('.tab-content.primary-assessment');
          
          if (primaryTabButton) primaryTabButton.classList.add('active');
          if (primaryTabContent) primaryTabContent.classList.add('active');
     }
-    // --- FIM LÓGICA DAS ABAS ---
 
+    // --- LÓGICA PARA FECHAR <DETAILS> ---
+    function closeAllDetails(container) {
+        if (!container) return;
+        const detailsElements = container.querySelectorAll('.assessment-detail');
+        detailsElements.forEach(detail => {
+            detail.removeAttribute('open');
+        });
+    }
+
+    const allDetails = document.querySelectorAll('.assessment-detail');
+    console.log(`Encontrados ${allDetails.length} elementos <details>.`); // Debug
+    allDetails.forEach(detail => {
+        detail.addEventListener('toggle', function(event) {
+            if (this.open) {
+                const parentTabContent = this.closest('.tab-content');
+                if (!parentTabContent) return;
+
+                const otherOpenDetails = parentTabContent.querySelectorAll('details[open]');
+                otherOpenDetails.forEach(otherDetail => {
+                    if (otherDetail !== this) { 
+                        otherDetail.removeAttribute('open');
+                    }
+                });
+            }
+        });
+    });
+    console.log("Listeners dos <details> ADICIONADOS."); // Debug
 
     // --- LÓGICA DO TIMER (CONTADOR CRESCENTE) ---
     function updateTimerDisplay() {
-        // (Lógica do timer crescente - idêntica à versão anterior)
-        if (currentTimeInSeconds >= totalTimeInSeconds) return; // Para se já atingiu o total
+        if (!timerInterval) return; 
+
+        if (currentTimeInSeconds >= totalTimeInSeconds) { 
+             clearInterval(timerInterval); 
+             timerInterval = null;
+             let finalMinutes = Math.floor(totalTimeInSeconds / 60);
+             let finalSeconds = totalTimeInSeconds % 60;
+             finalMinutes = finalMinutes < 10 ? '0' + finalMinutes : finalMinutes;
+             finalSeconds = finalSeconds < 10 ? '0' + finalSeconds : finalSeconds;
+             timerDisplay.textContent = `${finalMinutes}:${finalSeconds}`;
+             
+             timerDisplay.classList.remove('timer-warning'); 
+             btnStartTimer.disabled = true; 
+             inputTotalTime.disabled = true;
+             inputDegradeTime.disabled = true;
+             console.log("Tempo Total Esgotado."); // Debug
+             alert("TEMPO TOTAL ESGOTADO!");
+             return; 
+        }
 
         currentTimeInSeconds++; 
 
@@ -104,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Alerta de Degradação/Evento
         if (currentTimeInSeconds === degradationTimeInSeconds && !degradationAlertSent) {
+            console.log("Alerta de Degradação/Evento disparado."); // Debug
             const alertMessage = seletor ? 
                 "ALERTA DE DEGRADAÇÃO! O estado da vítima mudou. Reavalie os parâmetros!" :
                 "ALERTA DE EVENTO! Tempo definido atingido.";
@@ -112,30 +178,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Aviso de 5 Minutos Restantes
-        if (totalTimeInSeconds > fiveMinuteMarkInSeconds && currentTimeInSeconds === fiveMinuteWarningMark) {
+        if (fiveMinuteWarningMark > 0 && currentTimeInSeconds === fiveMinuteWarningMark) { 
+            console.log("Aviso de 5 minutos restantes ativado."); // Debug
             timerDisplay.classList.add('timer-warning');
-        }
-
-        // Fim do Tempo
-        if (currentTimeInSeconds >= totalTimeInSeconds) { 
-            clearInterval(timerInterval); 
-            timerInterval = null;
-            let finalMinutes = Math.floor(totalTimeInSeconds / 60);
-            let finalSeconds = totalTimeInSeconds % 60;
-            finalMinutes = finalMinutes < 10 ? '0' + finalMinutes : finalMinutes;
-            finalSeconds = finalSeconds < 10 ? '0' + finalSeconds : finalSeconds;
-            timerDisplay.textContent = `${finalMinutes}:${finalSeconds}`;
-            
-            timerDisplay.classList.remove('timer-warning'); 
-            btnStartTimer.disabled = true; 
-            inputTotalTime.disabled = true;
-            inputDegradeTime.disabled = true;
-            alert("TEMPO TOTAL ESGOTADO!");
         }
     }
 
     function startSimulator() {
-        // (Lógica de startSimulator - idêntica à versão anterior)
+        console.log("Iniciando Simulado..."); // Debug
         let totalMinutes = parseInt(inputTotalTime.value);
         let degradeMinutes = parseInt(inputDegradeTime.value);
 
@@ -148,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         totalTimeInSeconds = totalMinutes * 60;
         degradationTimeInSeconds = degradeMinutes * 60;
-        fiveMinuteWarningMark = totalTimeInSeconds - fiveMinuteMarkInSeconds; 
+        fiveMinuteWarningMark = (totalTimeInSeconds > fiveMinuteMarkInSeconds) ? totalTimeInSeconds - fiveMinuteMarkInSeconds : -1; 
         currentTimeInSeconds = 0; 
         degradationAlertSent = false; 
 
@@ -160,16 +210,14 @@ document.addEventListener('DOMContentLoaded', function() {
         inputDegradeTime.disabled = true;
 
         if (timerInterval) clearInterval(timerInterval);
-        // Roda a função uma vez imediatamente para mostrar 00:01 logo ao clicar
-        // Correção: Não chamar update logo de cara para começar em 00:00
-        // updateTimerDisplay(); 
         timerInterval = setInterval(updateTimerDisplay, 1000); 
+        console.log("Timer iniciado. Total:", totalTimeInSeconds, "Degradação:", degradationTimeInSeconds); // Debug
     }
 
     // --- LÓGICA DO RESET ---
     function resetSimulator() {
-        // (Lógica de resetSimulator - idêntica à versão anterior)
-         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        console.log("Resetando Simulador..."); // Debug
+        const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
         allCheckboxes.forEach(cb => cb.checked = false);
 
         clearInterval(timerInterval);
@@ -193,14 +241,16 @@ document.addEventListener('DOMContentLoaded', function() {
         renderNotes(); 
         if (noteInput) noteInput.value = ""; 
 
-        // Reseta todas as vítimas visíveis para a aba primária
         const allVictimContainers = document.querySelectorAll('.conteudo-vitima');
-        allVictimContainers.forEach(container => resetToPrimaryTab(container));
+        allVictimContainers.forEach(container => {
+             resetToPrimaryTab(container);
+             closeAllDetails(container); 
+        });
+        console.log("Reset Completo."); // Debug
     }
 
     // --- LÓGICA DAS NOTAS ---
-    function renderNotes() {
-        // (Lógica de renderNotes - idêntica à versão anterior)
+    function renderNotes() { 
         if (!notesDisplay) return; 
         notesDisplay.innerHTML = ""; 
         if (notes.length === 0) {
@@ -216,9 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notesDisplay.appendChild(noteElement);
         }
     }
-
-    function addNote() {
-        // (Lógica de addNote - idêntica à versão anterior)
+    function addNote() { 
         if (!noteInput || !timerDisplay) return; 
         const text = noteInput.value.trim();
         const timestamp = timerDisplay.textContent; 
@@ -226,20 +274,41 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Por favor, digite uma nota e inicie o simulador para registrar o tempo.");
             return;
         }
+        console.log("Adicionando nota:", text, "Timestamp:", timestamp); // Debug
         notes.push({ text: text, timestamp: timestamp });
         noteInput.value = ""; 
         renderNotes(); 
     }
-
-    if (addNoteButton) {
-        addNoteButton.addEventListener('click', addNote);
+    if (addNoteButton) { 
+        addNoteButton.addEventListener('click', addNote); 
+        console.log("Listener do botão de nota ADICIONADO."); // Debug
+    } else {
+        console.log("Botão de nota NÃO encontrado nesta página."); // Debug Info
     }
 
     // --- Adiciona os 'ouvintes' aos botões de controle do timer ---
-    btnStartTimer.addEventListener('click', startSimulator);
-    btnReset.addEventListener('click', resetSimulator);
+    if(btnStartTimer) {
+        btnStartTimer.addEventListener('click', startSimulator);
+        console.log("Listener do botão Start ADICIONADO."); // Debug
+    } else {
+         console.error("ERRO CRÍTICO: Botão Start Timer (btnStartTimer) NÃO ENCONTRADO!"); // Debug Error
+    }
+    
+    if(btnReset) {
+        btnReset.addEventListener('click', resetSimulator);
+        console.log("Listener do botão Reset ADICIONADO."); // Debug
+    } else {
+        console.error("ERRO CRÍTICO: Botão Reset (btnReset) NÃO ENCONTRADO!"); // Debug Error
+    }
 
-    // Inicializa a exibição das notas
-    renderNotes(); 
+    // Inicializa a exibição das notas e fecha details
+    try {
+        renderNotes(); 
+        const allVictimContainersOnInit = document.querySelectorAll('.conteudo-vitima');
+        allVictimContainersOnInit.forEach(container => closeAllDetails(container));
+        console.log("Inicialização finalizada."); // Debug
+    } catch (e) {
+        console.error("Erro durante a inicialização final:", e); // Debug Error
+    }
 
 }); // Fim do 'DOMContentLoaded'
